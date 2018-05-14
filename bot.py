@@ -3,10 +3,9 @@
 import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
-import asyncio
 
 bot = commands.Bot(command_prefix='#')
-client = discord.Client()
+
 
 @bot.event
 async def on_ready():
@@ -21,19 +20,22 @@ async def ping(ctx):
 
 @bot.command(pass_context=True)
 async def info(ctx, user: discord.Member):
-    await bot.say("The user's name is: {}".format(user.name))
-    await bot.say("The user's ID is: {}".format(user.id))
-    await bot.say("The user's status is: {}".format(user.status))
-    await bot.say("The user's highest role is: {}".format(user.top_role))
+    await bot.say("The users name is: {}".format(user.name))
+    await bot.say("The users ID is: {}".format(user.id))
+    await bot.say("The users status is: {}".format(user.status))
+    await bot.say("The users highest role is: {}".format(user.top_role))
     await bot.say("The user joined at: {}".format(user.joined_at))
+
 
 @bot.event
 async def on_member_join(member):
         server = member.server
         role = discord.utils.get(server.roles, name="new role")
         fmt = 'Welcome {0.mention} to the training camp! to {1.name}'
-        await client.send_message(server, fmt.format(member, server))
-        await client.add_roles(member, role)
-
+        try:
+            await bot.send_message(server, fmt.format(member, server))
+            await bot.add_roles(member, role)
+        except discord.Forbidden:
+            await bot.send_message(server, "I don't have perms to add roles.")
 
 bot.run("token")
