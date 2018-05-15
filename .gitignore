@@ -1,0 +1,11 @@
+*.ini
+*.sh
+*.log
+*.json
+*.png
+*.bin
+._*
+.DS_Store
+__pycache__
+data/
+.idea/
