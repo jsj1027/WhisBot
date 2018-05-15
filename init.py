@@ -11,7 +11,7 @@ config = configparser.ConfigParser()
 config.read("config.ini")
 
 Client = discord.Client()
-bot = commands.Bot(command_prefix="#")
+bot = commands.Bot(command_prefix="!")
 
 
 def send_client():
@@ -43,5 +43,5 @@ for work in works:
     except Exception as x:
         print("{} couldn't make the fight, the OmniKing will not be pleased.\n{}: {}".format(work, type(x).__name__, x))
         failed_works.append([work, type(x).__name__, x])
-
+config.sections()
 bot.run(config['Main']['token'])
