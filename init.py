@@ -43,5 +43,5 @@ for work in works:
     except Exception as x:
         print("{} couldn't make the fight, the OmniKing will not be pleased.\n{}: {}".format(work, type(x).__name__, x))
         failed_works.append([work, type(x).__name__, x])
-config.sections()
+
 bot.run(config['Main']['token'])

@@ -2,6 +2,8 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
 
+Client = discord.Client()
+bot = commands.Bot(command_prefix="!")
 
 class BotEvents:
 
@@ -11,13 +13,16 @@ class BotEvents:
 
     async def on_member_join(self, member):
             server = member.server
-            role = discord.utils.get(server.roles, name="new role")
-            fmt = 'Welcome {0.mention} to the training camp! to {1.name}'
+            role = discord.utils.get(server.roles, name="Mortals")
+            channel = discord.utils.get(server.channels, name="introductions")
+            fmt = 'Welcome {0.mention} to the Universe 7 training camp! '
             try:
-                await self.bot.send_message(server, fmt.format(member, server))
+                await self.bot.send_message(channel, fmt.format(member))
+                print('new member joined!')
                 await self.bot.add_roles(member, role)
+                print('given mortals role')
             except discord.Forbidden:
-                await self.bot.send_message(server, "I don't have perms to add roles.")
+                await self.bot.send_message(channel, "I don't have perms to add roles.")
 
     async def on_message(self, message):
         if ":SuperJJ:" in message.content:
