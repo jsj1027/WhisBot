@@ -1,9 +1,5 @@
 import discord
-from discord.ext import commands
-from discord.ext.commands import Bot
 
-Client = discord.Client()
-bot = commands.Bot(command_prefix="!")
 
 class BotEvents:
 
@@ -27,6 +23,7 @@ class BotEvents:
     async def on_message(self, message):
         if ":SuperJJ:" in message.content:
             await self.bot.send_message(message.channel, "JJ's power is going over 9000!")
+            print("power lvl increasing")
 
 
 def setup(bot):
