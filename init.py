@@ -8,28 +8,17 @@ import configparser
 config = configparser.ConfigParser()
 config.read("config.ini")
 
-client = discord.Client()
 bot = commands.Bot(command_prefix="!")
 
-"""
-def send_client():
-    return Client
-
-
-def send_bot():
-    return bot
-"""
 
 @bot.event
 async def on_ready():
-    m = client.get_all_channels()
-    channel = discord.utils.get(client.get_all_channels(), server__name='JJ_Discord', name='announcements')
-    message = "Hmmm, training begins now!\n"
-    message += f"Ho Ho Ho, my name is {bot.user.name}, and this is the realm of the Omni-King!\n"
+    channel = bot.get_channel(config['Main']['bot_test'])
+    message = "'Hmmm, training begins now!'\n"
+    message += f"'Ho Ho Ho, my name is {bot.user.name}, and this is the realm of the Omni-King!' - Whisbot\n"
     print(message)
-    ebm = discord.Embed(title='My Embed Title', description='My Embed Content.')
-    await bot.send_message(channel, message, embed=ebm)
-
+    embed = discord.Embed(title='Whis is online', description=message)
+    await bot.send_message(destination=channel, embed=embed)
 
 works = [
     'bot_events',
