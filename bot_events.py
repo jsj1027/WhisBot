@@ -16,6 +16,7 @@ class BotEvents:
                 await self.bot.send_message(channel, fmt.format(member))
                 print('new member joined!')
                 await self.bot.add_roles(member, role)
+                await self.bot.send_message(channel, "{member.mention} is now a mortal!")
                 print('given mortals role')
             except discord.Forbidden:
                 await self.bot.send_message(channel, "I don't have perms to add roles.")
@@ -24,6 +25,11 @@ class BotEvents:
         if ":SuperJJ:" in message.content:
             await self.bot.send_message(message.channel, "JJ's power is going over 9000!")
             print("power lvl increasing")
+
+    async def on_message_edit(self, message, member):
+        msg = f"{member.mention} changed their message\n"
+        msg += f"Their message was {message.content}\n"
+        await self.bot.send_message(message.channel, msg)
 
 
 def setup(bot):
