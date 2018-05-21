@@ -14,7 +14,8 @@ class BotCommands:
         print("user has pinged")
 
     @commands.command(name="info")
-    async def info(self, member: discord.Member):
+    async def info(self): #, member: discord.Member):
+        """
         print("The user has requested a ping.")
         role = member.top_role
         if role == "@everyone":
@@ -25,7 +26,7 @@ class BotCommands:
         await self.bot.say("The users status is: {}".format(member.status))
         await self.bot.say("The users highest role is: {}".format(role))
         await self.bot.say("The user joined at: {}".format(member.joined_at))
-        """
+
             @commands.command(pass_context=True, name="info")
             async def info(self, ctx, user: discord.Member):
                 channel = user.channel
