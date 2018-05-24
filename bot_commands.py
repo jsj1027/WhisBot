@@ -1,6 +1,4 @@
-import discord
 from discord.ext import commands
-
 
 class BotCommands:
 
@@ -14,9 +12,9 @@ class BotCommands:
         print("user has pinged")
 
     @commands.command(pass_context= True, name="info")
-    async def info(self, cfx): #, member: discord.Member):
-        user = cfx.message.author
-        channel = cfx.message.channel
+    async def info(self, ctx): #, member: discord.Member):
+        user = ctx.message.author
+        channel = ctx.message.channel
         role = user.top_role
         if role == "@everyone":
             role = "@ everyone"
@@ -27,7 +25,7 @@ class BotCommands:
         msg += f"Your best role is {role}\n"
         msg += f"And you joined this server on {user.joined_at}\n"
         await self.bot.send_message(channel, msg)
-        print(f"The user {user.name}, has requested the following"
+        print(f"The user {user.name}, has requested the following "
               f"Name:{user.name}, ID:{user.id}, Status:{user.status},"
               f" Role:{role}, and Join Date/Time:{user.joined_at}")
         #Need the to get the name, id, status, top role, and join date
