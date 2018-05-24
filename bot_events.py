@@ -1,5 +1,8 @@
 import discord
+import configparser
 
+config = configparser.ConfigParser()
+config.read("config.ini")
 
 class BotEvents:
 
@@ -16,7 +19,7 @@ class BotEvents:
                 await self.bot.send_message(channel, fmt.format(member))
                 print('new member joined!')
                 await self.bot.add_roles(member, role)
-                await self.bot.send_message(channel, "{member.mention} is now a mortal!")
+                await self.bot.send_message(channel, "{You are now a mortal!")
                 print('given mortals role')
             except discord.Forbidden:
                 await self.bot.send_message(channel, "I don't have perms to add roles.")
@@ -26,11 +29,16 @@ class BotEvents:
             await self.bot.send_message(message.channel, "JJ's power is going over 9000!")
             print("power lvl increasing")
 
-    async def on_message_edit(self, message, member):
-        msg = f"{member.mention} changed their message\n"
-        msg += f"Their message was {message.content}\n"
-        await self.bot.send_message(message.channel, msg)
-
+    async def on_message_edit(self, before, after):
+        if before.author.id == config['Main']['whis_id']:
+            pass
+        else:
+            msg = f"{before.author} changed their message\n"
+            msg += f"Their message was '{before.content}'\n and was changed to '{after.content}'"
+            await self.bot.send_message(before.channel, msg)
+            feedback = "This feature might be changed to logging only, please provide Kalo with feedback"
+            await self.bot.send_message(before.channel, feedback)
+            print("message was edited")
 
 def setup(bot):
     bot.add_cog(BotEvents(bot))
