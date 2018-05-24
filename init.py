@@ -13,7 +13,7 @@ bot = commands.Bot(command_prefix="!")
 
 @bot.event
 async def on_ready():
-    channel = bot.get_channel(config['Main']['bot_test'])
+    channel = bot.get_channel(config['Main']['bot_test_text'])
     message = "'Hmmm, training begins now!'\n"
     message += f"'Ho Ho Ho, my name is {bot.user.name}, and this is the realm of the Omni-King!' - Whisbot\n"
     print(message)
