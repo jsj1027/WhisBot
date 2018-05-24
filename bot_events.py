@@ -13,7 +13,7 @@ class BotEvents:
     async def on_member_join(self, member):
             server = member.server
             role = discord.utils.get(server.roles, name="Mortals")
-            channel = discord.utils.get(server.channels, name="introductions")
+            channel = discord.utils.get(server.channels, name=config['channel_text']['introduction_channel_text'])
             fmt = 'Welcome {0.mention} to the Universe 7 training camp! '
             try:
                 await self.bot.send_message(channel, fmt.format(member))
@@ -30,7 +30,7 @@ class BotEvents:
             print("power lvl increasing")
 
     async def on_message_edit(self, before, after):
-        if before.author.id == config['Main']['whis_id']:
+        if before.author.id == config['id']['whis_id']:
             pass
         else:
             msg = f"{before.author} changed their message\n"
