@@ -26,24 +26,20 @@ class ModCommands:
         self.bot = bot
         print('Work "{}" loaded'.format(self.__class__.__name__))
 
-
+    # @mod_check
     @commands.command(pass_context=True, name="timeout")
-    #@mod_check
     async def timeout(self, ctx, *, arg):
+        self.bot.wait_until_ready() #might break all the code, check if everything works then delete
         command_string = ''
         command_string, user = user_parse(arg)
         timeout_until = timeout_parse(command_string)
         server = ctx.message.server
         member = discord.utils.get(server.members, id=user)
-        print(member)
+        timeout_role = discord.utils.get(server.roles, name=config['role_name']['timeout_role'])
+        self.bot.add_roles(member, timeout_role)
+
 
     """
-    @commands.command(name="rest")
-    @mod_check
-    async def rest(self, ctx,):
-        pass
-
-    @rest.error
     @timeout.error
     async def mod_fail(self, ctx, command):
         user = ctx.message.author
