@@ -8,11 +8,13 @@ class BotCommands:
 
     @commands.command(ame="ping")
     async def ping(self):
+        self.bot.wait_until_ready() #might break all the code, check if everything works then delete
         await self.bot.say(":ping_pong: ping!! xSSS")
         print("user has pinged")
 
     @commands.command(pass_context= True, name="info")
     async def info(self, ctx): #, member: discord.Member):
+        self.bot.wait_until_ready() #might break all the code, check if everything works then delete
         user = ctx.message.author
         channel = ctx.message.channel
         role = user.top_role
