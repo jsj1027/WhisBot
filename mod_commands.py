@@ -3,6 +3,7 @@ from discord.ext import commands
 import configparser
 from timeout import *
 import datetime
+import asyncio
 
 config = configparser.ConfigParser()
 config.read("config.ini")
@@ -30,13 +31,15 @@ class ModCommands:
     @commands.command(pass_context=True, name="timeout")
     async def timeout(self, ctx, *, arg):
         self.bot.wait_until_ready() #might break all the code, check if everything works then delete
-        command_string = ''
         command_string, user = user_parse(arg)
         timeout_until = timeout_parse(command_string)
         server = ctx.message.server
         member = discord.utils.get(server.members, id=user)
         timeout_role = discord.utils.get(server.roles, name=config['role_name']['timeout_role'])
-        self.bot.add_roles(member, timeout_role)
+        await self.bot.add_roles(member, timeout_role)
+        await asyncio.sleep(timeout_until-datetime.datetime.now())
+        await self.bot.member.remove_roles(timeout_role, reason="User finished the timeout", atomic=True)
+
 
 
     """
