@@ -17,7 +17,6 @@ def user_parse(commands):
     return commandstring, person
 
 def timeout_parse(commands):
-    when = datetime.datetime.now()
     command_list = commands.split(" ")
     weeks, days, hours, minutes, seconds, counter, num = 0, 0, 0, 0, 0, 0, 0
     element = ''
@@ -42,5 +41,4 @@ def timeout_parse(commands):
                 seconds = int(num)
             counter = 0
     later = timedelta(weeks=weeks, days=days, hours=hours, minutes=minutes, seconds=seconds)
-    when = when + later
-    return when
+    return later.total_seconds()

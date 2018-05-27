@@ -30,16 +30,26 @@ class ModCommands:
     # @mod_check
     @commands.command(pass_context=True, name="timeout")
     async def timeout(self, ctx, *, arg):
-        self.bot.wait_until_ready() #might break all the code, check if everything works then delete
+        self.bot.wait_until_ready()
         command_string, user = user_parse(arg)
         timeout_until = timeout_parse(command_string)
         server = ctx.message.server
         member = discord.utils.get(server.members, id=user)
         timeout_role = discord.utils.get(server.roles, name=config['role_name']['timeout_role'])
+        reason = f"You have been deemed an annoyance, but only a minor one, and are being put in stasis. This was on order of {ctx.message.author}"
         await self.bot.add_roles(member, timeout_role)
-        await asyncio.sleep(timeout_until-datetime.datetime.now())
-        await self.bot.member.remove_roles(timeout_role, reason="User finished the timeout", atomic=True)
-
+        if member.voice_channel == None:
+            pass
+        else:
+            channel = discord.utils.get(server.channels, name=config['channel_voice']['afk_channel'])
+            await self.bot.move_member(member, channel)
+        await self.bot.send_message(member, reason)
+        print(f"{member.name} was timed out by {ctx.message.author}")
+        await asyncio.sleep(timeout_until)
+        end_reason = f"{member.name} are no longer in my stasis field, try be better this time. Remember this was on order of {ctx.message.author}"
+        await self.bot.remove_roles(member, timeout_role)
+        await self.bot.send_message(member, end_reason)
+        print(f"{member.name} finished their timeout from {ctx.message.author}")
 
 
     """
