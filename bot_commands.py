@@ -1,6 +1,4 @@
-import discord
 from discord.ext import commands
-
 
 class BotCommands:
 
@@ -8,41 +6,31 @@ class BotCommands:
         self.bot = bot
         print('Work "{}" loaded'.format(self.__class__.__name__))
 
-    @commands.command(pass_context=True, name="ping")
-    async def ping(self, ctx):
+    @commands.command(ame="ping")
+    async def ping(self):
+        self.bot.wait_until_ready() #might break all the code, check if everything works then delete
         await self.bot.say(":ping_pong: ping!! xSSS")
         print("user has pinged")
 
-    @commands.command(name="info")
-    async def info(self): #, member: discord.Member):
-        """
-        print("The user has requested a ping.")
-        role = member.top_role
+    @commands.command(pass_context= True, name="info")
+    async def info(self, ctx): #, member: discord.Member):
+        self.bot.wait_until_ready() #might break all the code, check if everything works then delete
+        user = ctx.message.author
+        channel = ctx.message.channel
+        role = user.top_role
         if role == "@everyone":
             role = "@ everyone"
-        print("wtfwtfwtwfw/n wtfwtfwtf/n wtfwtfwtfw/n")
-        await self.bot.say(f"The users Name is: {member.name}")
-        await self.bot.say("The users ID is: {}".format(member.id))
-        await self.bot.say("The users status is: {}".format(member.status))
-        await self.bot.say("The users highest role is: {}".format(role))
-        await self.bot.say("The user joined at: {}".format(member.joined_at))
-
-            @commands.command(pass_context=True, name="info")
-            async def info(self, ctx, user: discord.Member):
-                channel = user.channel
-                role = user.top_role.name
-                if role == "@everyone":
-                    role = "@-everyone"
-                fmt = 'Welcome {0.name} to the Universe 7 training camp! '
-                print("wtfwtfwtwfw/n wtfwtfwtf/n wtfwtfwtfw/n")
-                await self.bot.send_message(channel, fmt.format(user))
-                #await self.bot.say("The users name is: {0.name}\n").fornat(user)
-
-                await self.bot.say("The users ID is: {}".format(member.id))
-                await self.bot.say("The users status is: {}".format(member.status))
-                await self.bot.say("The users highest role is: {}".format(member.top_role))
-                await self.bot.say("The user joined at: {}".format(member.joined_at))
-        """
+        msg = "Oh Ho, Ho, I know a lot about you, young mortal\n"
+        msg += f"Your name is {user.name}\n"
+        msg += f"Your ID is {user.id}\n"
+        msg += f"Your status is {user.status}\n"
+        msg += f"Your best role is {role}\n"
+        msg += f"And you joined this server on {user.joined_at}\n"
+        await self.bot.send_message(channel, msg)
+        print(f"The user {user.name}, has requested the following "
+              f"Name:{user.name}, ID:{user.id}, Status:{user.status},"
+              f" Role:{role}, and Join Date/Time:{user.joined_at}")
+        #Need the to get the name, id, status, top role, and join date
 
 def setup(bot):
     bot.add_cog(BotCommands(bot))
