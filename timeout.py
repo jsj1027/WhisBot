@@ -1,6 +1,7 @@
 import datetime
 from datetime import timedelta
 
+
 def user_parse(commands):
     person=''
     command_list = commands.split(" ")
@@ -15,6 +16,7 @@ def user_parse(commands):
             person = person.replace("<", '')
             person = person.replace(">", '')
     return commandstring, person
+
 
 def timeout_parse(commands):
     command_list = commands.split(" ")

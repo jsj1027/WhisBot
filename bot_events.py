@@ -44,5 +44,6 @@ class BotEvents:
             await self.bot.send_message(before.channel, feedback)
             print("message was edited")
 
+
 def setup(bot):
     bot.add_cog(BotEvents(bot))

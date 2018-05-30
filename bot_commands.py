@@ -1,5 +1,6 @@
 from discord.ext import commands
 
+
 class BotCommands:
 
     def __init__(self, bot):
@@ -30,7 +31,7 @@ class BotCommands:
         print(f"The user {user.name}, has requested the following "
               f"Name:{user.name}, ID:{user.id}, Status:{user.status},"
               f" Role:{role}, and Join Date/Time:{user.joined_at}")
-        #Need the to get the name, id, status, top role, and join date
+
 
 def setup(bot):
     bot.add_cog(BotCommands(bot))
