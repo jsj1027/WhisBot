@@ -9,24 +9,21 @@ class BotCommands:
 
     @commands.command(ame="ping")
     async def ping(self):
-        self.bot.wait_until_ready() #might break all the code, check if everything works then delete
-        await self.bot.say(":ping_pong: ping!! xSSS")
+        self.bot.wait_until_ready()
+        await self.bot.say(":ping_pong: ping!! xSSS, lol whis would never say this")
         print("user has pinged")
 
-    @commands.command(pass_context= True, name="info")
-    async def info(self, ctx): #, member: discord.Member):
-        self.bot.wait_until_ready() #might break all the code, check if everything works then delete
+    @commands.command(pass_context=True, name="info")
+    async def info(self, ctx):
+        self.bot.wait_until_ready()
         user = ctx.message.author
         channel = ctx.message.channel
         role = user.top_role
         if role == "@everyone":
             role = "@ everyone"
-        msg = "Oh Ho, Ho, I know a lot about you, young mortal\n"
-        msg += f"Your name is {user.name}\n"
-        msg += f"Your ID is {user.id}\n"
-        msg += f"Your status is {user.status}\n"
-        msg += f"Your best role is {role}\n"
-        msg += f"And you joined this server on {user.joined_at}\n"
+        msg = f"Oh Ho, Ho, I know a lot about you, young mortal\n Your name is {user.name}\n Your ID is {user.id}\n " \
+              f"Your status is {user.status}\n Your best role is {role}\n " \
+              f"And you joined this server on {user.joined_at}\n"
         await self.bot.send_message(channel, msg)
         print(f"The user {user.name}, has requested the following "
               f"Name:{user.name}, ID:{user.id}, Status:{user.status},"
