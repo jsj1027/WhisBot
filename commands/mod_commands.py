@@ -66,6 +66,23 @@ class ModCommands:
             await self.bot.send_message(ctx.message.channel, error)
             print(error)
 
+    @commands.command(pass_context=True, name='kick')
+    @mod_check()
+    async def kick(self, ctx, *args):
+        self.bot.wait_until_ready()
+        victim = ctx.message.mentions
+        if len(victim) > 1:
+            raise commands.TooManyArguments("Limit use to one person at a time.")
+        victim = victim[0]
+        server = ctx.message.server
+        command_list = command_parse(args)
+        kick_date = datetime.datetime.now()
+        msg = possible(ctx, ctx.message.author, victim)
+        if msg is not '':
+            await self.bot.send_message(ctx.message.channel, msg)
+            print(f"{ctx.message.author} tried to use timeout on {victim.name}")
+            return
+
 
 def setup(bot):
     bot.add_cog(ModCommands(bot))
