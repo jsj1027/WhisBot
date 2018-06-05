@@ -13,10 +13,10 @@ bot = commands.Bot(command_prefix="!")
 
 @bot.event
 async def on_ready():
-    servers =  bot.servers
+    servers = bot.servers
     server = discord.utils.get(servers, id=config['id']['server_id'])
     channel = discord.utils.get(server.channels, name=config['channel_text']['bot_test_text'])
-    message = f"'Hmmm, training begins now!'\n " \
+    message = f"'Hmmm, training begins now!'\n" \
               f"'Ho Ho Ho, my name is {bot.user.name}, " \
               f"and this is the realm of the Omni-King!' - Whisbot\n"
     embed = discord.Embed(title='Whis is online', description=message)
@@ -24,9 +24,9 @@ async def on_ready():
     print(message)
 
 works = [
-    'bot_events',
-    'bot_commands',
-    'mod_commands'
+    'events.bot_events',
+    'commands.bot_commands',
+    'commands.mod_commands'
 ]
 
 failed_works = []
