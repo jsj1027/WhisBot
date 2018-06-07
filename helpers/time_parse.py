@@ -1,7 +1,7 @@
 from datetime import timedelta
 
 
-def timeout_parse(commands):
+def time_parse(commands):
     weeks, days, hours, minutes, seconds, counter, num = 0, 0, 0, 0, 0, 0, 0
     for command in commands:
         if command.isdigit():
