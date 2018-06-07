@@ -1,7 +1,7 @@
 import discord
 import asyncio
 import datetime
-from helpers.timeout import *
+from helpers.time_parse import *
 from permission_check import *
 from helpers.command_parse import *
 
@@ -26,9 +26,8 @@ class ModCommands:
         if len(victim) > 1:
             raise commands.TooManyArguments("Limit use to one person at a time.")
         victim = victim[0]
-        server = ctx.message.server
         command_list = command_parse(args)
-        timeout_role = discord.utils.get(server.roles, name=config['role_name']['timeout_role'])
+        timeout_role = discord.utils.get(ctx.message.server.roles, name=config['role_name']['timeout_role'])
         timeout_date = datetime.datetime.now()
         reason = f"You have been deemed an annoyance, but only a minor one, and are being put in stasis. " \
                  f"This was on order of {ctx.message.author}"
@@ -39,10 +38,10 @@ class ModCommands:
             await self.bot.send_message(ctx.message.channel, msg)
             print(f"{ctx.message.author} tried to use timeout on {victim.name}")
             return
-        timeout_until = timeout_parse(command_list)
+        timeout_until = time_parse(command_list)
         await self.bot.add_roles(victim, timeout_role)
         if victim.voice_channel is not None:
-            channel = discord.utils.get(server.channels, name=config['channel_voice']['afk_channel'])
+            channel = discord.utils.get(ctx.message.server.channels, name=config['channel_voice']['afk_channel'])
             await self.bot.move_member(victim, channel)
         await self.bot.send_message(victim, reason)
         await self.bot.send_message(ctx.message.channel,
@@ -56,19 +55,10 @@ class ModCommands:
                                                          f" their time out, which happened on {timeout_date}")
         print(f"{victim.name} finished their timeout from {ctx.message.author}")
 
-    @timeout.error
-    async def mod_check_fail(self, error, ctx):
-        if isinstance(error, commands.CheckFailure):
-            user = ctx.message.author
-            await self.bot.send_message(ctx.message.channel, error)
-            print(f"{user.name} with {user.id} tried to access timeout command server owner permission.")
-        elif isinstance(error, commands.TooManyArguments):
-            await self.bot.send_message(ctx.message.channel, error)
-            print(error)
-
     @commands.command(pass_context=True, name='kick')
     @mod_check()
     async def kick(self, ctx, *args):
+        counter = 0
         self.bot.wait_until_ready()
         victim = ctx.message.mentions
         if len(victim) > 1:
@@ -80,8 +70,29 @@ class ModCommands:
         msg = possible(ctx, ctx.message.author, victim)
         if msg is not '':
             await self.bot.send_message(ctx.message.channel, msg)
-            print(f"{ctx.message.author} tried to use timeout on {victim.name}")
+            print(f"{ctx.message.author} tried to use kick on {victim.name}")
             return
+        kick_until = time_parse(command_list)
+        print(f"{victim.name} was kicked by {ctx.message.author} on {kick_date}")
+        await self.bot.kick(victim)
+        while counter < kick_until:
+            if victim in server.members:
+                await self.bot.kick(victim)
+                print(f"{victim.name} rejoined too early and was auto kicked")
+            counter += 60
+            await asyncio.sleep(60)
+        print(f"{victim.name} finished their kick time from {ctx.message.author}")
+
+    @timeout.error
+    @kick.error
+    async def mod_check_fail(self, error, ctx):
+        if isinstance(error, commands.CheckFailure):
+            user = ctx.message.author
+            await self.bot.send_message(ctx.message.channel, error)
+            print(f"{user.name} with {user.id} tried to access timeout command server owner permission.")
+        elif isinstance(error, commands.TooManyArguments):
+            await self.bot.send_message(ctx.message.channel, error)
+            print(error)
 
 
 def setup(bot):
