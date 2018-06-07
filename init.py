@@ -25,15 +25,15 @@ async def on_ready():
 
 works = [
     'events.bot_events',
-    'commands.bot_commands',
-    'commands.mod_commands'
+    'cogs.bot_commands',
+    'cogs.mod_commands'
 ]
 
 failed_works = []
 
 # Credit goes to https://github.com/nh-server/Kurisu/blob/master/run.py
 """
-loads the extra files for the bot(commands, event calls, etc).
+loads the extra files for the bot(cogs, event calls, etc).
 """
 for work in works:
     try:
