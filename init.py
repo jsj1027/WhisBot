@@ -28,6 +28,7 @@ works = [
     'events.announcement_events',
     'cogs.bot_commands',
     'cogs.mod_commands'
+
 ]
 
 failed_works = []
