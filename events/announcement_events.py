@@ -1,9 +1,13 @@
 import discord
 from discord.ext import commands
 import configparser
+from log_sys.log_system import send_log
+import datetime
 
 config = configparser.ConfigParser()
 config.read("config.ini")
+
+log_location = "user_event"
 
 class Announcements:
 
@@ -18,6 +22,9 @@ class Announcements:
             if "@everyone" in message.content:
                 await self.bot.delete_message(message)
                 await self.bot.send_message(channel, "You can't use @ everyone in this channel.")
-                print(f"{message.author} tried using @everyone in {channel}")
+                log_msg = f"{message.author} tried using @everyone in {channel} on {datetime.datetime.now}"
+                send_log(log_msg, log_location)
+                print(log_msg)
+
 def setup(bot):
     bot.add_cog(Announcements(bot))

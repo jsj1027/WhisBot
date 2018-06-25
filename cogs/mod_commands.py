@@ -4,6 +4,7 @@ import datetime
 from helpers.time_parse import *
 from permission_check import *
 from helpers.command_parse import *
+from log_sys.log_system import send_log
 
 config = configparser.ConfigParser()
 config.read("config.ini")
@@ -11,6 +12,7 @@ server_owner = config['role_name']['server_owner']
 admin = config['role_name']['admin']
 whis = config['id']['whis_id']
 
+log_location = "mod_command"
 
 class ModCommands:
 
@@ -36,7 +38,9 @@ class ModCommands:
         msg = possible(ctx, ctx.message.author, victim)
         if msg is not '':
             await self.bot.send_message(ctx.message.channel, msg)
-            print(f"{ctx.message.author} tried to use timeout on {victim.name}")
+            log_msg = f"{ctx.message.author} tried to use timeout on {victim.name} on {datetime.datetime.now()}"
+            print(log_msg)
+            send_log(log_msg, log_location)
             return
         timeout_until = time_parse(command_list)
         await self.bot.add_roles(victim, timeout_role)
@@ -44,15 +48,16 @@ class ModCommands:
             channel = discord.utils.get(ctx.message.server.channels, name=config['channel_voice']['afk_channel'])
             await self.bot.move_member(victim, channel)
         await self.bot.send_message(victim, reason)
-        await self.bot.send_message(ctx.message.channel,
-                                    f"{victim.mention} was timed out until"
-                                    f" {timeout_date+timedelta(seconds=timeout_until)}")
-        print(f"{victim.name} was timed out by {ctx.message.author}")
+        log_msg = f"{victim.mention} was timed out until {timeout_date+timedelta(seconds=timeout_until)}, by {ctx.message.author},  on {datetime.datetime.now()}"
+        await self.bot.send_message(ctx.message.channel, log_msg)
+        print(log_msg)
+        send_log(log_msg, log_location)
         await asyncio.sleep(timeout_until)
         await self.bot.remove_roles(victim, timeout_role)
         await self.bot.send_message(victim, end_reason)
-        await self.bot.send_message(ctx.message.channel, f"{victim.mention} has finished"
-                                                         f" their time out, which happened on {timeout_date}")
+        log_msg = f"{victim.mention} has finished their time out, which happened on {timeout_date}, by {ctx.message.author}"
+        send_log(log_msg, log_location)
+        await self.bot.send_message(ctx.message.channel, log_msg)
         print(f"{victim.name} finished their timeout from {ctx.message.author}")
 
     @commands.command(pass_context=True, name='kick')
@@ -93,7 +98,6 @@ class ModCommands:
         elif isinstance(error, commands.TooManyArguments):
             await self.bot.send_message(ctx.message.channel, error)
             print(error)
-
 
 def setup(bot):
     bot.add_cog(ModCommands(bot))

@@ -1,15 +1,20 @@
 import discord
 import configparser
+from log_sys.log_system import *
 
 config = configparser.ConfigParser()
 config.read("config.ini")
 
+log_location = "user_event"
 
 class BotEvents:
 
     def __init__(self, bot):
         self.bot = bot
         print('Work "{}" loaded'.format(self.__class__.__name__))
+
+    async def on_ready(self):
+        create_log_files()
 
     async def on_member_join(self, member):
         self.bot.wait_until_ready()
@@ -19,10 +24,14 @@ class BotEvents:
         fmt = 'Welcome {0.mention} to the Universe 7 training camp! '
         try:
             await self.bot.send_message(channel, fmt.format(member))
-            print('new member joined!')
+            new_mem = f'{member.name} joined {member.server} on {datetime.datetime.now()}'
+            send_log(new_mem, log_location)
+            print(new_mem)
             await self.bot.add_roles(member, role)
             await self.bot.send_message(channel, "You are now a mortal!")
-            print('given mortals role')
+            give_role = f"{member.name} given Mortal role in {member.server} on {datetime.datetime.now()}"
+            print(give_role)
+            send_log(give_role, log_location)
         except discord.Forbidden:
             await self.bot.send_message(channel, "I don't have perms to add roles.")
 
@@ -30,20 +39,21 @@ class BotEvents:
         self.bot.wait_until_ready()
         if ":SuperJJ:" in message.content:
             await self.bot.send_message(message.channel, "JJ's power is going over 9000!")
-            # might break all the code, check if everything works then delete figure out what this does
             await self.bot.process_commands(message)
-            print("power lvl increasing")
+            log_msg = f"{message.author} triggered bot_events.on_message event on {datetime.datetime.now()}"
+            send_log(log_msg, log_location)
+            print(log_msg)
+
 
     async def on_message_edit(self, before, after):
+        #TODO: Move this to a moderation event place.
         self.bot.wait_until_ready()
         if before.author.id == config['id']['whis_id']:
             pass
         else:
-            msg = f"{before.author} changed their message\n"
-            msg += f"Their message was '{before.content}'\n and was changed to '{after.content}'"
-            await self.bot.send_message(before.channel, msg)
-            feedback = "This feature might be changed to logging only, please provide Kalo with feedback"
-            await self.bot.send_message(before.channel, feedback)
+            log_msg = f"{before.author} changed their message\n"
+            log_msg += f"Their message was '{before.content}'\n and was changed to '{after.content}' on {datetime.datetime.now()}"
+            send_log(log_msg, log_location)
             print("message was edited")
 
 
