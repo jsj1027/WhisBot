@@ -9,7 +9,7 @@ config = configparser.ConfigParser()
 config.read("config.ini")
 server_owner = config['role_name']['server_owner']
 admin = config['role_name']['admin']
-whis = config['role_name']['whis']
+whis = config['id']['whis_id']
 
 
 class ModCommands:
