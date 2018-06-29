@@ -7,6 +7,7 @@ config.read("config.ini")
 
 log_location = "user_event"
 
+
 class BotEvents:
 
     def __init__(self, bot):
@@ -43,18 +44,6 @@ class BotEvents:
             log_msg = f"{message.author} triggered bot_events.on_message event on {datetime.datetime.now()}"
             send_log(log_msg, log_location)
             print(log_msg)
-
-
-    async def on_message_edit(self, before, after):
-        #TODO: Move this to a moderation event place.
-        self.bot.wait_until_ready()
-        if before.author.id == config['id']['whis_id']:
-            pass
-        else:
-            log_msg = f"{before.author} changed their message\n"
-            log_msg += f"Their message was '{before.content}'\n and was changed to '{after.content}' on {datetime.datetime.now()}"
-            send_log(log_msg, log_location)
-            print("message was edited")
 
 
 def setup(bot):

@@ -9,6 +9,7 @@ config.read("config.ini")
 
 log_location = "user_event"
 
+
 class Announcements:
 
     def __init__(self, bot):
