@@ -15,6 +15,7 @@ class BotEvents:
         print('Work "{}" loaded'.format(self.__class__.__name__))
 
     async def on_ready(self):
+        self.bot.wait_until_ready()
         create_log_files()
 
     async def on_member_join(self, member):
