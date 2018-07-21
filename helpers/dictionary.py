@@ -136,17 +136,39 @@ white_list = {
     "sure": 0
 }
 
-def check_black_list_word(word):
+#values are [[bad words used list], total points, banned_x_times]
+users = {}
+
+
+def check_user_dict(user):
+    if user in users:
+        return users[user]
+    else:
+        return False
+
+
+def change_user_dict_info(user_id_number, user_info):
+    users[user_id_number] = user_info
+    return
+
+
+def check_black_list_dict(word):
     if word in black_list:
         return black_list[word]
     else:
         return False
 
-def check_white_list_word(word):
+
+def add_user_to_dict(user_id_number, bad_words_used, points_to_add):
+    users[user_id_number] = [[bad_words_used], points_to_add, 0]
+
+
+def check_white_list_dict(word):
     if word in white_list:
         return white_list[word]
     else:
         return False
+
 
 def check_black_list_intersection(message_set):
     return message_set.intersection(black_list)
