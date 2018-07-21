@@ -21,7 +21,7 @@ class MessageEvents:
         if user_point_total > 4:
             self.bot.ban(message.author)
             user_ban_reset(message.author.id)
-          #send message saying you banned in pm
+            #send message saying you banned in pm
         else:
             # send message warning them of their closeness to a ban in a pm
             return
