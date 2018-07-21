@@ -28,7 +28,7 @@ works = [
     'events.announcement_events',
     'cogs.bot_commands',
     'cogs.mod_commands',
-    'moderation.message_logging'
+    'moderation.message_events'
 
 ]
 
