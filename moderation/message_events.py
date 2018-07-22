@@ -16,6 +16,8 @@ class MessageEvents:
 
     async def on_message(self, message):
         bad_words = check_contents(message)
+        if not bad_words:
+            return
         user_gained_points = point_assignment(bad_words)
         user_point_total = add_points(message.author.id, user_gained_points, bad_words)
         if user_point_total > 4:
