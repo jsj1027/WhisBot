@@ -171,9 +171,10 @@ def check_white_list_dict(word):
 
 
 def check_black_list_intersection(message_set):
-    return message_set.intersection(black_list)
-
+    #return message_set.intersection(black_list)
+    return message_set.keys() & black_list.keys()
 
 def check_white_list_intersection(message_set):
-    return message_set.intersection(white_list)
-
+    #return message_set.intersection(white_list)
+    #At this point message_set is a set
+    return message_set & white_list.keys()
