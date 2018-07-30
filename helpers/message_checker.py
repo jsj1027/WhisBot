@@ -1,17 +1,18 @@
 from helpers.dictionary import *
 
 
-
 def check_contents(message):
     message_set = {}
-    for word in message.content:
+    message_split_up = message.content.split()
+    for word in message_split_up:
         message_set[word] = word
     message_set = check_black_list_intersection(message_set)
     if not message_set:
         return
     message_white = check_white_list_intersection(message_set)
-    for word in message_white:
-        message_set.remove(word)
+    if not message_white:
+        for word in message_white:
+            message_set.remove(word)
     return message_set
 
 
