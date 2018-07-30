@@ -15,11 +15,11 @@ class BotEvents:
         print('Work "{}" loaded'.format(self.__class__.__name__))
 
     async def on_ready(self):
-        self.bot.wait_until_ready()
+        await self.bot.wait_until_ready()
         create_log_files()
 
     async def on_member_join(self, member):
-        self.bot.wait_until_ready()
+        await self.bot.wait_until_ready()
         server = member.server
         role = discord.utils.get(server.roles, name="Mortals")
         channel = discord.utils.get(server.channels, name=config['channel_text']['introduction_channel_text'])
@@ -38,13 +38,14 @@ class BotEvents:
             await self.bot.send_message(channel, "I don't have perms to add roles.")
 
     async def on_message(self, message):
-        self.bot.wait_until_ready()
+        await self.bot.wait_until_ready()
         if ":SuperJJ:" in message.content:
             await self.bot.send_message(message.channel, "JJ's power is going over 9000!")
             await self.bot.process_commands(message)
             log_msg = f"{message.author} triggered bot_events.on_message event on {datetime.datetime.now()}"
             send_log(log_msg, log_location)
             print(log_msg)
+        await self.bot.process_commands(message)
 
 
 def setup(bot):

@@ -12,7 +12,7 @@ class BotCommands:
 
     @commands.command(pass_context=True, name="ping")
     async def ping(self, ctx):
-        self.bot.wait_until_ready()
+        await self.bot.wait_until_ready()
         await self.bot.say(":ping_pong: ping!! xSSS, lol whis would never say this")
         log_message = f"{ctx.message.author} used ping command on {datetime.datetime.now()}"
         send_log(log_message, log_location)
@@ -20,7 +20,7 @@ class BotCommands:
 
     @commands.command(pass_context=True, name="info")
     async def info(self, ctx):
-        self.bot.wait_until_ready()
+        await self.bot.wait_until_ready()
         user = ctx.message.author
         channel = ctx.message.channel
         role = user.top_role
