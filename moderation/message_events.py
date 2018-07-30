@@ -6,7 +6,7 @@ config = configparser.ConfigParser()
 config.read("config.ini")
 whis_id = config['id']['whis_id']
 log_location = "bot_moderation"
-
+destination = "bot_moderation"
 
 class MessageEvents:
 
@@ -20,13 +20,21 @@ class MessageEvents:
             return
         user_gained_points = point_assignment(bad_words)
         user_point_total = add_points(message.author.id, user_gained_points, bad_words)
-        if user_point_total > 4:
+        if user_point_total >= 4:
             self.bot.ban(message.author)
+            send_log(f"{message.author} was banned.", destination)
             user_ban_reset(message.author.id)
-            #send message saying you banned in pm
+            msg = f"You have been banned from {message.server} due to repeated use of terrible language. No one is" \
+                  f" required to be a saint here but we do enforce restrictions upon the worst words. If you feel" \
+                  f" that this was a mistake please send a message to {config['role_name']['server_owner']}"
+            self.bot.send_message(message.author, msg )
         else:
-            # send message warning them of their closeness to a ban in a pm
-            return
+            send_log(f"{message.author} was warned about their use of the words {bad_words}.", destination)
+            msg = f"You are being warned that your language on {message.server} will not be tolerated. You have been" \
+                  f" found saying these words {bad_words}. Please refrain from repeating your this, and if you feel" \
+                  f" this to be a mistake please contact" \
+                  f" {config['role_name']['server_owner']} or {config['id']['author_id']}"
+            self.bot.send_message(message.author, msg)
 
     async def on_message_delete(self, message):
         self.bot.wait_until_ready()
