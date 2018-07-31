@@ -19,29 +19,29 @@ def check_contents(message):
 def point_assignment(message_set):
     point_total = 0
     for word in message_set:
-      point_total += check_black_list_dict(word)
+      point_total += check_black_list_database(word)
     return point_total
 
 
 def add_points(user_id_number, points_to_add, bad_words_used):
     total = 0
-    if check_user_dict(user_id_number):
-        user_info = check_user_dict(user_id_number)
+    if check_user_database(user_id_number):
+        user_info = check_user_database(user_id_number)
         user_info[1] += points_to_add
         user_info[0] += bad_words_used
         total = float(user_info[1])
-        change_user_dict_info(user_id_number, user_info)
+        change_user_database_info(user_id_number, user_info)
     else:
-        add_user_to_dict(user_id_number, bad_words_used, points_to_add)
+        add_user_to_user_database(user_id_number, bad_words_used, points_to_add)
     return total
 
 
 def user_ban_reset(user_id_number):
 
-    user_info = check_user_dict(user_id_number)
+    user_info = check_user_database(user_id_number)
     user_info[1] = 0
     user_info[2] += 1
-    change_user_dict_info(user_id_number, user_info)
+    change_user_database_info(user_id_number, user_info)
     return
 
 #create some text file and load it with the users name saing heyyyy this nigga banned.
