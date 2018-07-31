@@ -3,6 +3,7 @@
 import discord
 from discord.ext import commands
 import configparser
+from log_sys.log_system import *
 
 #config for token credit to https://github.com/nh-server/Kurisu
 config = configparser.ConfigParser()
@@ -21,6 +22,8 @@ async def on_ready():
               f"and this is the realm of the Omni-King!' - Whisbot\n"
     embed = discord.Embed(title='Whis is online', description=message)
     await bot.send_message(destination=channel, embed=embed)
+    create_log_files()
+    send_log(message, "initialization")
     print(message)
 
 works = [
