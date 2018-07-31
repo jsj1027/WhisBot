@@ -16,7 +16,6 @@ class BotEvents:
 
     async def on_ready(self):
         await self.bot.wait_until_ready()
-        create_log_files()
 
     async def on_member_join(self, member):
         await self.bot.wait_until_ready()
