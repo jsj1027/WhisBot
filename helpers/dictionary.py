@@ -14,7 +14,8 @@ black_list = json.load(f)
 f = open(white_list_filename, 'r+')
 white_list = json.load(f)
 f = open(users_filename, 'r+')
-users = json.load(f)
+user_database = json.load(f)
+
 
 def get_black_list():
     global black_list
@@ -27,27 +28,40 @@ def get_white_list():
 
 
 def get_users():
-    global users
-    return users
+    global user_database
+    return user_database
 
 
-def check_user_database(user):
-    if user in users:
-        return users[user]
+def check_if_user_in_database(user_id):
+    user_database = get_users()
+    if user_id in user_database:
+        return True
     else:
         return False
 
 
-def change_user_database_info(user_id_number, user_info):
-    users[user_id_number] = user_info
-    return
+def grab_user_from_database(user_id):
+    user_database = get_users()
+    if check_if_user_in_database(user_id):
+        return user_database[user_id]
+    else:
+        raise ValueError("This user isn't in the database, you can't grab it/")
+
+
+def change_user_database_info(user_id_number, new_user_info):
+    user_database = get_users()
+    if check_if_user_in_database(user_id_number):
+        user_database[user_id_number] = new_user_info
+    else:
+        raise ValueError("This user isn't in the database, you can't change their info")
 
 
 def add_user_to_user_database(user_id_number, bad_words_used, points_to_add):
-    if check_user_database(user_id_number) == False:
-        users[user_id_number] = [[bad_words_used], points_to_add, 0]
+    if not check_if_user_in_database(user_id_number):
+        user_database[user_id_number] = [[bad_words_used], points_to_add, 0]
     else:
         raise ValueError("This value is already in the database")
+
 
 def check_black_list_database(word):
     if word in black_list:

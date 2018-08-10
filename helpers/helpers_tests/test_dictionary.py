@@ -20,14 +20,22 @@ class TestDictionary(TestCase):
 
     def test_get_users(self):
         t = get_users()
-        self.assertEqual(users, t)
+        self.assertEqual(user_database, t)
 
+# YOU FIX THIS
     def test_user_in_database(self):
         expected = [[], 0, 0]
-        self.assertEqual(check_user_database('00'), expected, msg="Was not the right person")
+        self.assertEqual(check_if_user_in_database('00'), expected, msg="Was not the right person")
 
     def test_user_not_in_database(self):
-        self.assertEqual(check_user_database('000'), False, msg="Was in the database or it borked")
+        self.assertEqual(check_if_user_in_database('000'), False, msg="Was in the database or it borked")
+
+    def test_change_user_database_info(self):
+        self.assertEqual(check_if_user_in_database('000'), False, msg="Was in the database or it borked")
+
+    def test_can_not_change_user_database_info(self):
+        self.assertEqual(check_if_user_in_database('000'), False, msg="Was in the database or it borked")
+# YOU FIX THIS
 
     def test_add_user_to_user_database(self):
         mock_database = get_users()
@@ -60,4 +68,20 @@ class TestDictionary(TestCase):
         for word in message:
             message_set[word] = word
         intersection = check_black_list_intersection(message_set)
+        self.assertEqual(set(), intersection)
+
+    def test_check_white_list_intersection(self):
+        message = "This is a placeholder".split()
+        message_set = {}
+        for word in message:
+            message_set[word] = word
+        intersection = check_white_list_intersection(message_set)
+        self.assertEqual({"placeholder"}, intersection)
+
+    def test_check_no_white_list_intersection(self):
+        message = "Jake is a nice guy".split()
+        message_set = {}
+        for word in message:
+            message_set[word] = word
+        intersection = check_white_list_intersection(message_set)
         self.assertEqual(set(), intersection)
