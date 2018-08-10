@@ -1,6 +1,4 @@
 {
-  "black_list":
-  {
     "arian": 0.5,
     "aryan": 0.5,
     "beaner": 0.5,
@@ -67,6 +65,5 @@
     "spooge": 0.5,
     "wetback": 0.5,
     "whore": 0.5,
-    "wigger": 0.5
-  }
+"wigger": 0.5
 }
