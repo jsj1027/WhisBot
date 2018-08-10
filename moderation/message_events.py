@@ -8,6 +8,7 @@ whis_id = config['id']['whis_id']
 log_location = "bot_moderation"
 destination = "bot_moderation"
 
+
 class MessageEvents:
 
     def __init__(self, bot):
