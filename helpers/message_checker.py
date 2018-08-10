@@ -3,8 +3,8 @@ from helpers.dictionary import *
 
 def check_contents(message):
     message_set = {}
-    message_split_up = message.content.split()
-    for word in message_split_up:
+    message.content = message.content.split()
+    for word in message.content:
         message_set[word] = word
     message_set = check_black_list_intersection(message_set)
     if not message_set:
