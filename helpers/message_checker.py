@@ -22,11 +22,11 @@ def point_assignment(message_set):
         point_total += check_black_list_database(word)
     return point_total
 
-
+#// TODO move the adding of new information to change_user_database_info_and_add_more checks
 def add_points(user_id_number, points_to_add, bad_words_used):
-    total = 0
+    total = points_to_add
     if check_if_user_in_database(user_id_number):
-        user_info = check_if_user_in_database(user_id_number)
+        user_info = grab_user_from_database(user_id_number)
         user_info[1] += points_to_add
         user_info[0] += bad_words_used
         total = float(user_info[1])
@@ -35,13 +35,13 @@ def add_points(user_id_number, points_to_add, bad_words_used):
         add_user_to_user_database(user_id_number, bad_words_used, points_to_add)
     return total
 
-
+#//TODO move the adding of new information to change_user_database_info_and_add_more checks
 def user_ban_reset(user_id_number):
+    if(check_if_user_in_database(user_id_number)):
+        user_info = grab_user_from_database(user_id_number)
+        user_info[1] = 0
+        user_info[2] += 1
+        change_user_database_info(user_id_number, user_info)
+        return
 
-    user_info = check_if_user_in_database(user_id_number)
-    user_info[1] = 0
-    user_info[2] += 1
-    change_user_database_info(user_id_number, user_info)
-    return
 
-# create some text file and load it with the users name saing heyyyy this nigga banned.

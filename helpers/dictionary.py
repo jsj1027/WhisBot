@@ -27,7 +27,7 @@ def set_black_list():
 def set_white_list():
     # TODO Move code to initialize it here
     return
-
+    #YO USE THIS TO WRITE THE NEW INFORMATION BACK TO THE FILE, THAT IS WHY IT ISNT SAVING LOCALLY MY DUDE!
 
 def set_users():
     # TODO Move code to initialize it here
