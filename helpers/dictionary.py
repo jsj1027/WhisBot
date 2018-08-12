@@ -15,7 +15,24 @@ f = open(white_list_filename, 'r+')
 white_list = json.load(f)
 f = open(users_filename, 'r+')
 user_database = json.load(f)
+# TODO We can probably make the dictionary holding everything a class, tbh we can prob make this whole thing /
+# / involved in way more OOP
 
+"""
+def set_black_list():
+    # TODO Move code to initialize it here
+    return 
+
+
+def set_white_list():
+    # TODO Move code to initialize it here
+    return
+
+
+def set_users():
+    # TODO Move code to initialize it here
+    return
+"""
 
 def get_black_list():
     global black_list
