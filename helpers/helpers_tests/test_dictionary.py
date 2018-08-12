@@ -8,8 +8,13 @@ class TestDictionary(TestCase):
         return
 
     def tearDown(self):
+        """
+        // TODO FIX THIS SHIT TO WORK FOR THE TEST CASES CUZ IT DOESN'T
+        f = open(users_filename, 'r+')
+        global user_database
+        user_database = json.load(f)
         return
-
+        """
     def test_get_black_list(self):
         t = get_black_list()
         self.assertEqual(black_list, t)
@@ -22,20 +27,32 @@ class TestDictionary(TestCase):
         t = get_users()
         self.assertEqual(user_database, t)
 
-# YOU FIX THIS
     def test_user_in_database(self):
         expected = [[], 0, 0]
-        self.assertEqual(check_if_user_in_database('00'), expected, msg="Was not the right person")
+        user_database = get_users()
+        user = user_database['00']
+        self.assertEqual(user, expected, msg="Was not the right person")
 
     def test_user_not_in_database(self):
-        self.assertEqual(check_if_user_in_database('000'), False, msg="Was in the database or it borked")
+        test_user_database = get_users()
+        self.assertRaises(KeyError, lambda: test_user_database['000'])
+
+    def test_grab_user_from_database(self):
+        user_database = get_users()
+        user = user_database['00']
+        self.assertEqual(user, grab_user_from_database('00'), msg="Was not the right person")
+
+    def test_grab_user_from_database_failed(self):
+        self.assertRaises(ValueError, lambda: grab_user_from_database('000'))
 
     def test_change_user_database_info(self):
-        self.assertEqual(check_if_user_in_database('000'), False, msg="Was in the database or it borked")
+        new_info = '[[arian], .5, 1]'
+        local_user_database = get_users()
+        change_user_database_info('00', new_info)
+        self.assertEqual(local_user_database['00'], new_info, msg="Was in the database or it borked")
 
     def test_can_not_change_user_database_info(self):
-        self.assertEqual(check_if_user_in_database('000'), False, msg="Was in the database or it borked")
-# YOU FIX THIS
+        self.assertRaises(ValueError, lambda: change_user_database_info('000', new_user_info='[[arian], .5, 1]'))
 
     def test_add_user_to_user_database(self):
         mock_database = get_users()
@@ -53,6 +70,14 @@ class TestDictionary(TestCase):
     def test_check_not_in_black_list_database(self):
         expected = False
         self.assertEqual(expected, check_black_list_database('return'))
+
+    def test_check_white_list_database(self):
+        expected = 0
+        self.assertEqual(expected, check_white_list_database('placeholder'))
+
+    def test_check_not_in_white_list_database(self):
+        expected = False
+        self.assertEqual(expected, check_white_list_database('return'))
 
     def test_check_black_list_intersection(self):
         message = "Jake is an arian".split()
