@@ -22,26 +22,24 @@ def point_assignment(message_set):
         point_total += check_black_list_database(word)
     return point_total
 
-#// TODO move the adding of new information to change_user_database_info_and_add_more checks
+#//TODO HOLY CRAP WHY DOES THIS RETURN A NUMBER MAKE THIS NEVER RETURN A NUMBER THIS IS GARBAGE CODE
 def add_points(user_id_number, points_to_add, bad_words_used):
-    total = points_to_add
-    if check_if_user_in_database(user_id_number):
-        user_info = grab_user_from_database(user_id_number)
-        user_info[1] += points_to_add
-        user_info[0] += bad_words_used
-        total = float(user_info[1])
-        change_user_database_info(user_id_number, user_info)
-    else:
+    user_point_total = 0
+    try:
+        add_points_to_user(user_id_number, points_to_add)
+        add_words_to_user(user_id_number, bad_words_used)
+        user = grab_user_from_database(user_id_number)
+        user_point_total = user[1]
+    except ValueError:
         add_user_to_user_database(user_id_number, bad_words_used, points_to_add)
-    return total
+    return user_point_total
 
-#//TODO move the adding of new information to change_user_database_info_and_add_more checks
+
 def user_ban_reset(user_id_number):
-    if(check_if_user_in_database(user_id_number)):
-        user_info = grab_user_from_database(user_id_number)
-        user_info[1] = 0
-        user_info[2] += 1
-        change_user_database_info(user_id_number, user_info)
-        return
+    try:
+        ban_counter_reset(user_id_number)
+    except Exception as e:
+        print(e)
+    return
 
 

@@ -5,6 +5,7 @@ from helpers.dictionary import *
 class TestDictionary(TestCase):
 
     def setUp(self):
+
         return
 
     def tearDown(self):
@@ -13,8 +14,10 @@ class TestDictionary(TestCase):
         f = open(users_filename, 'r+')
         global user_database
         user_database = json.load(f)
-        return
         """
+
+        return
+
     def test_get_black_list(self):
         t = get_black_list()
         self.assertEqual(black_list, t)
@@ -28,9 +31,10 @@ class TestDictionary(TestCase):
         self.assertEqual(user_database, t)
 
     def test_user_in_database(self):
-        expected = [[], 0, 0]
+        add_user_to_user_database('32', 'arian', 3)
+        expected = [['arian'], 3, 0]
         user_database = get_users()
-        user = user_database['00']
+        user = user_database['32']
         self.assertEqual(user, expected, msg="Was not the right person")
 
     def test_user_not_in_database(self):
