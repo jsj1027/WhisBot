@@ -38,7 +38,7 @@ class BotEvents:
 
     async def on_message(self, message):
         await self.bot.wait_until_ready()
-        if ":SuperJJ:" in message.content:
+        if ":iamjjSuperJJ:" in message.content:
             await self.bot.send_message(message.channel, "JJ's power is going over 9000!")
             await self.bot.process_commands(message)
             log_msg = f"{message.author} triggered bot_events.on_message event on {datetime.datetime.now()}"
