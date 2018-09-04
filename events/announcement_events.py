@@ -31,5 +31,6 @@ class Announcements:
                 pass
         await self.bot.process_commands(message)
 
+
 def setup(bot):
     bot.add_cog(Announcements(bot))
