@@ -16,7 +16,7 @@ bot = commands.Bot(command_prefix="!")
 async def on_ready():
     servers = bot.servers
     server = discord.utils.get(servers, id=config['id']['server_id'])
-    channel = discord.utils.get(server.channels, name=config['channel_text']['bot_test_text'])
+    channel = discord.utils.get(server.channels, id=config['channel_text']['bot_test_text'])
     message = f"'Hmmm, training begins now!'\n" \
               f"'Ho Ho Ho, my name is {bot.user.name}, " \
               f"and this is the realm of the Omni-King!' - Whisbot\n"

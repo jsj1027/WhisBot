@@ -4,6 +4,7 @@ from log_sys.log_system import send_log
 
 log_location = "user_command"
 
+
 class BotCommands:
 
     def __init__(self, bot):

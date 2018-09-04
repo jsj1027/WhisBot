@@ -3,7 +3,7 @@ from pathlib import Path
 
 # values are [[bad words used list], total points, banned_x_times]
 
-database_folder = Path("C:/Users/Kaloshade/Desktop/Folders/WhisBot/database_files")
+database_folder = Path("database_files")
 black_list_filename = database_folder / "test_black.json"
 white_list_filename = database_folder / "test_white.json"
 user_database_filename = database_folder / "test_user.json"
@@ -58,11 +58,13 @@ def save_white_list():
         json.dump(local_white_list, outfile)
     return
 
+
 def save_user_database():
     local_user_database = get_users()
     with open(user_database_filename, 'w') as outfile:
         json.dump(local_user_database, outfile)
     return
+
 
 def get_black_list():
     global black_list
