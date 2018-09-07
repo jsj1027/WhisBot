@@ -37,10 +37,8 @@ class MessageEvents:
                   f" this to be a mistake please contact" \
                   f" {config['role_name']['server_owner']} or {config['id']['author_id']}"
             await self.bot.send_message(message.author, msg)
-        await self.bot.process_commands(message)
 
     async def on_message_delete(self, message):
-        await self.bot.wait_until_ready()
         if message.author.id == whis_id:
             pass
         else:
@@ -49,7 +47,6 @@ class MessageEvents:
             send_log(log_msg, log_location)
 
     async def on_message_edit(self, before, after):
-        await self.bot.wait_until_ready()
         if before.author.id == whis_id:
             pass
         else:

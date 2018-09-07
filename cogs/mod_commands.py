@@ -23,7 +23,6 @@ class ModCommands:
     @commands.command(pass_context=True, name="timeout")
     @mod_check()
     async def timeout(self, ctx, *args):
-        await self.bot.wait_until_ready()
         victim = ctx.message.mentions
         if len(victim) > 1:
             raise commands.TooManyArguments("Limit use to one person at a time.")
@@ -64,7 +63,6 @@ class ModCommands:
     @mod_check()
     async def kick(self, ctx, *args):
         counter = 0
-        await self.bot.wait_until_ready()
         victim = ctx.message.mentions
         if len(victim) > 1:
             raise commands.TooManyArguments("Limit use to one person at a time.")

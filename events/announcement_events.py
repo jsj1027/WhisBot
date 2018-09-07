@@ -29,7 +29,7 @@ class Announcements:
                 print(log_msg)
             else:
                 pass
-        await self.bot.process_commands(message)
+
 
 
 def setup(bot):
