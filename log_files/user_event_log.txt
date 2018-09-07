@@ -1,0 +1,1 @@
+Kaloshade#8050 triggered bot_events.on_message event on 2018-09-07 02:11:38.650936    , DateTime: 2018-09-07 02:11:38.650936
