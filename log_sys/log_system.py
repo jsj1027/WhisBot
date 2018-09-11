@@ -23,7 +23,9 @@ def switch(destination):
 
 def send_log(log_message, destination):
     filename = switch(destination)
-    filename.write_text(log_message+f"    , DateTime: {datetime.datetime.now()}\n")
+    f = open(filename, "a+")
+    f.write(log_message+f"    , DateTime: {datetime.datetime.now()}\n")
+
 
 
 def create_log_files():
