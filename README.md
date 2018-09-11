@@ -1,6 +1,6 @@
-# WhisBot
+# WhisBot ![][logo]
 
-![][logo]
+
 
 What is WhisBot?
 ------
