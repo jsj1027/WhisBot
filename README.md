@@ -1,6 +1,6 @@
-# WhisBot ![][logo]
+# WhisBot  
 
-
+![][logo]
 
 What is WhisBot?
 ------
@@ -20,4 +20,4 @@ Features
 * User management automation
 * Chat moderation
 
-[logo]: https://github.com/jsj1027/WhisBot/blob/master/images/whis.jpg "Picture of Whis" <img style="border-radius: 50%;">
+[logo]: https://github.com/jsj1027/WhisBot/blob/master/images/whis.jpg "Picture of Whis"
