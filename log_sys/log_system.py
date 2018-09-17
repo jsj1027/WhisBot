@@ -27,7 +27,6 @@ def send_log(log_message, destination):
     f.write(log_message+f"    , DateTime: {datetime.datetime.now()}\n")
 
 
-
 def create_log_files():
     log_msg=""
     if not initialization_log_filename.exists():

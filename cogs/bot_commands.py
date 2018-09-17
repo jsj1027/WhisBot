@@ -1,6 +1,7 @@
 from discord.ext import commands
 import datetime
 from log_sys.log_system import send_log
+import helpers.counters
 
 log_location = "user_command"
 
@@ -21,6 +22,14 @@ class BotCommands:
             await ctx.send(content=":ping_pong: Ooo, I believe they call this game table tennis, I would love to play")
             log_message = f"{ctx.message.author} used ping command on {datetime.datetime.now()}"
             send_log(log_message, log_location)
+        except Exception as error:
+            send_log(str(error), log_location)
+
+    @commands.command(pass_context=True, name="potato")
+    async def potato(self, ctx):
+        try:
+            await ctx.send(content=f"Even the Omni-King messes up!"
+                                   f" Currently the audience potato count is {helpers.counters.get_potato_count()}")
         except Exception as error:
             send_log(str(error), log_location)
 

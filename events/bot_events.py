@@ -1,6 +1,7 @@
 import discord
 import configparser
 from log_sys.log_system import *
+from helpers.counters import *
 
 config = configparser.ConfigParser()
 config.read("config.ini")
@@ -13,6 +14,9 @@ class BotEvents:
     def __init__(self, bot):
         self.bot = bot
         print('Work "{}" loaded'.format(self.__class__.__name__))
+
+    async def on_ready(self):
+        load_potato_count()
 
     async def on_member_join(self, member):
         guild = member.guild
@@ -37,6 +41,8 @@ class BotEvents:
             await message.channel.send(content="JJ's power is going over 9000!")
             log_msg = f"{message.author} triggered bot_events.on_message event on {datetime.datetime.now()}"
             send_log(log_msg, log_location)
+        if ":potato:" in message.content:
+            update_potato_count()
 
 
 def setup(bot):
