@@ -1,6 +1,7 @@
 *.png
 *.bin
 __pycache__
+.pytest_cache/
 data/
 .idea/
 config.ini
