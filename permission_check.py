@@ -50,6 +50,22 @@ def is_mod(ctx):
         return False
 
 
+def is_whis(bot_info):
+    if bot_info.id == int(whis):
+        return True
+
+
+def whis_check():
+    def predicate(ctx):
+        if is_whis(ctx):
+            return True
+        else:
+            user = ctx.message.author
+            msg = f"{user.mention},only the {server_owner} has access, you can not use this command"
+            raise commands.CheckFailure(msg)
+    return commands.check(predicate)
+
+
 def server_owner_check():
     def predicate(ctx):
         total = sum([is_author(ctx), is_server_owner(ctx)])
