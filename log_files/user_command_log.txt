@@ -1,1 +1,4 @@
 The user Kaloshade, has requested the following Name:Kaloshade, ID:142804332444778496, Status:online, Role:DaiShinKhan, and Join Date/Time:2018-05-06 19:12:38.217612, on 2018-09-07 02:11:29.739174    , DateTime: 2018-09-07 02:11:29.739174
+Kaloshade#8050 used ping command on 2018-09-17 16:53:34.396259    , DateTime: 2018-09-17 16:53:34.400259
+Kaloshade#8050 used ping command on 2018-09-17 19:55:49.811436    , DateTime: 2018-09-17 19:55:49.812450
+'_io.TextIOWrapper' object has no attribute 'read_text'    , DateTime: 2018-09-17 20:02:41.932488
