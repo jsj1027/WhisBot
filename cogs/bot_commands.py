@@ -16,7 +16,7 @@ class BotCommands:
     async def hello(self, ctx):
         await ctx.send(content=f'Hello young {ctx.author.top_role}, how are you today?')
 
-    @commands.command(pass_context=True, name="ping")
+    @commands.command(name="ping")
     async def ping(self, ctx):
         try:
             await ctx.send(content=":ping_pong: Ooo, I believe they call this game table tennis, I would love to play")
@@ -25,7 +25,7 @@ class BotCommands:
         except Exception as error:
             send_log(str(error), log_location)
 
-    @commands.command(pass_context=True, name="potato")
+    @commands.command(name="potato")
     async def potato(self, ctx):
         try:
             await ctx.send(content=f"Even the Omni-King messes up!"
@@ -53,6 +53,7 @@ class BotCommands:
             send_log(log_message, log_location)
         except Exception as error:
             send_log(str(error), log_location)
+
 
 def setup(bot):
     bot.add_cog(BotCommands(bot))
