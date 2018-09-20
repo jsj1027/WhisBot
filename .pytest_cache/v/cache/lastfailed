@@ -1,0 +1,4 @@
+{
+  "helpers/helpers_tests/test_dictionary.py::TestDictionary::test_get_users": true,
+  "helpers/helpers_tests/test_dictionary.py::TestDictionary::test_user_in_database": true
+}

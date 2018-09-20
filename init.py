@@ -37,16 +37,17 @@ for work in works:
         send_log(msg, log_location)
         failed_works.append([work, type(x).__name__, x])
 
+
 @bot.event
 async def on_ready():
     try:
-        guild = bot.get_guild(id=int(config['id']['guild_id']))
+        guild = bot.get_guild(id=int(config['id']['server_id']))
         channel = bot.get_channel(id=int(config['channel_text']['bot_test_text']))
         if channel in guild.channels:
             pass
         else:
-            print(Exception)
-        bot_info= await bot.application_info()
+            send_log(str(e), log_location)
+        bot_info = await bot.application_info()
         bot_name = bot_info.name
         message = f"'Hmmm, training begins now!'\n" \
                   f"'Ho Ho Ho, my name is {bot_name}, " \
@@ -54,8 +55,7 @@ async def on_ready():
         embed = discord.Embed(title='Whis is online', description=message)
         await channel.send(embed=embed)
         send_log(message, log_location)
-    except Exception:
-        print(Exception)
+    except Exception as e:
+        send_log(str(e), log_location)
+
 bot.run(config['token']['token'])
-
-

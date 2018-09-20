@@ -1,0 +1,7 @@
+[
+  "helpers/helpers_tests/test_message_checker.py::TestMessageChecker::test_add_points_existing_user",
+  "helpers/helpers_tests/test_message_checker.py::TestMessageChecker::test_add_points_none_existing_user",
+  "helpers/helpers_tests/test_message_checker.py::TestMessageChecker::test_check_contents",
+  "helpers/helpers_tests/test_message_checker.py::TestMessageChecker::test_check_contents_nothing_inside",
+  "helpers/helpers_tests/test_message_checker.py::TestMessageChecker::test_point_assignment"
+]

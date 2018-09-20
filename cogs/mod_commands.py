@@ -14,6 +14,7 @@ whis = config['id']['whis_id']
 
 log_location = "mod_command"
 
+
 class ModCommands:
 
     def __init__(self, bot):
