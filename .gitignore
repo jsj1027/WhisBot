@@ -1,4 +1,3 @@
-.pytest_cache
 *.png
 *.bin
 __pycache__
