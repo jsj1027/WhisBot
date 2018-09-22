@@ -14,7 +14,10 @@ class BotCommands:
 
     @commands.command(name='hello')
     async def hello(self, ctx):
-        await ctx.send(content=f'Hello young {ctx.author.top_role}, how are you today?')
+        try:
+            await ctx.send(content=f'Hello young {ctx.author.top_role}, how are you today?')
+        except Exception as error:
+            send_log(str(error), log_location)
 
     @commands.command(name="ping")
     async def ping(self, ctx):
