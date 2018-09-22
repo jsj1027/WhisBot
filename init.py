@@ -16,7 +16,7 @@ bot = commands.Bot(command_prefix="!")
 create_log_files()
 works = [
     'events.bot_events',
-   # 'events.announcement_events',
+    'events.announcement_events',
     'cogs.bot_commands'#,
   #  'cogs.mod_commands',
   #  'moderation.message_events'
@@ -41,7 +41,7 @@ for work in works:
 @bot.event
 async def on_ready():
     try:
-        guild = bot.get_guild(id=int(config['id']['server_id']))
+        guild = bot.get_guild(id=int(config['id']['guild_id']))
         channel = bot.get_channel(id=int(config['channel_text']['bot_test_text']))
         if channel in guild.channels:
             pass
