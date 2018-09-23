@@ -38,3 +38,28 @@ Kaloshade#8050 triggered bot_events.on_message event on 2018-09-17 21:06:53.0594
 Kaloshade#8050 triggered bot_events.on_message event on 2018-09-17 21:07:01.980160    , DateTime: 2018-09-17 21:07:01.981147
 Kaloshade#8050 triggered bot_events.on_message event on 2018-09-17 21:08:00.781406    , DateTime: 2018-09-17 21:08:00.781406
 Kaloshade#8050 triggered bot_events.on_message event on 2018-09-17 21:23:07.649435    , DateTime: 2018-09-17 21:23:07.649435
+Kaloshade#8050 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:43:35.396978
+Whis#4772 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:43:35.558877
+Whis#4772 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:43:35.666880
+Whis#4772 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:43:35.812865
+Whis#4772 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:43:36.075188
+Whis#4772 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:43:41.166865
+Whis#4772 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:43:41.301905
+Whis#4772 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:43:41.405700
+Whis#4772 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:43:41.509526
+Whis#4772 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:43:41.625552
+Whis#4772 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:43:46.840884
+Whis#4772 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:43:46.976693
+Whis#4772 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:43:47.076277
+Whis#4772 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:43:47.264849
+Whis#4772 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:43:47.821629
+Kaloshade#8050 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:51:06.113726
+Whis#4772 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:51:06.326066
+Whis#4772 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:51:06.439040
+Whis#4772 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:51:06.584430
+Whis#4772 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:51:06.685439
+Kaloshade#8050 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 19:52:55.846670
+Kaloshade#8050 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 20:11:37.557831
+Kaloshade#8050 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 20:11:56.819631
+Kaloshade#8050 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 20:12:11.323697
+Kaloshade#8050 tried using @everyone in bot-test on <built-in method now of type object at 0x674B2678>    , DateTime: 2018-09-22 20:12:25.072718

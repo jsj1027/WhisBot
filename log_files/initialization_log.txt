@@ -1,0 +1,31 @@
+Logging is online.    , DateTime: 2018-09-22 19:34:20.983496
+'server_id'    , DateTime: 2018-09-22 19:34:27.325419
+Logging is online.    , DateTime: 2018-09-22 19:36:12.625890
+'server_id'    , DateTime: 2018-09-22 19:36:15.191618
+Logging is online.    , DateTime: 2018-09-22 19:38:29.282968
+'server_id'    , DateTime: 2018-09-22 19:39:21.125867
+Logging is online.    , DateTime: 2018-09-22 19:39:34.020210
+'Hmmm, training begins now!'
+'Ho Ho Ho, my name is Whis, and this is the realm of the Omni-King!' - Whisbot
+    , DateTime: 2018-09-22 19:39:36.645551
+Logging is online.    , DateTime: 2018-09-22 19:42:22.336146
+'Hmmm, training begins now!'
+'Ho Ho Ho, my name is Whis, and this is the realm of the Omni-King!' - Whisbot
+    , DateTime: 2018-09-22 19:42:25.402605
+Logging is online.    , DateTime: 2018-09-22 19:50:57.883003
+'Hmmm, training begins now!'
+'Ho Ho Ho, my name is Whis, and this is the realm of the Omni-King!' - Whisbot
+    , DateTime: 2018-09-22 19:51:00.925241
+Logging is online.    , DateTime: 2018-09-22 19:52:48.044818
+'Hmmm, training begins now!'
+'Ho Ho Ho, my name is Whis, and this is the realm of the Omni-King!' - Whisbot
+    , DateTime: 2018-09-22 19:52:50.632747
+Logging is online.    , DateTime: 2018-09-22 20:03:24.891399
+Logging is online.    , DateTime: 2018-09-22 20:10:15.761415
+'Hmmm, training begins now!'
+'Ho Ho Ho, my name is Whis, and this is the realm of the Omni-King!' - Whisbot
+    , DateTime: 2018-09-22 20:10:18.436917
+Logging is online.    , DateTime: 2018-09-22 20:11:31.462806
+'Hmmm, training begins now!'
+'Ho Ho Ho, my name is Whis, and this is the realm of the Omni-King!' - Whisbot
+    , DateTime: 2018-09-22 20:11:34.133618
