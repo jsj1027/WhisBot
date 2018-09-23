@@ -1,6 +1,0 @@
-<@445504960923172884> was timed out until 2018-09-04 22:02:13.976026, by Kaloshade#8050,  on 2018-09-04 22:02:11.475944    , DateTime: 2018-09-04 22:02:11.601977
-<@445504960923172884> was timed out until 2018-09-04 22:02:13.977017, by Kaloshade#8050,  on 2018-09-04 22:02:11.560018    , DateTime: 2018-09-04 22:02:11.740988
-<@445504960923172884> was timed out until 2018-09-04 22:02:13.977017, by Kaloshade#8050,  on 2018-09-04 22:02:11.648928    , DateTime: 2018-09-04 22:02:11.884004
-<@445504960923172884> has finished their time out, which happened on 2018-09-04 22:02:10.976026, by Kaloshade#8050    , DateTime: 2018-09-04 22:02:14.757990
-<@445504960923172884> has finished their time out, which happened on 2018-09-04 22:02:10.977017, by Kaloshade#8050    , DateTime: 2018-09-04 22:02:14.927954
-<@445504960923172884> has finished their time out, which happened on 2018-09-04 22:02:10.977017, by Kaloshade#8050    , DateTime: 2018-09-04 22:02:18.009680
