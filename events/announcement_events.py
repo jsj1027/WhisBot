@@ -17,7 +17,7 @@ class Announcements:
 
     async def on_message(self, message):
         try:
-            if message.mention_everyone:
+            if '@everyone' in message.content:
                 channel = message.channel
                 announcement_channel = discord.utils.get(message.guild.channels,
                                                          id=config['channel_text']['announcement_channel_text'])
