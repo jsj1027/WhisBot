@@ -1,7 +1,7 @@
 import datetime
 from pathlib import Path
 
-log_folder = Path("log_files")
+log_folder = Path.cwd().parent
 initialization_log_filename = log_folder / "initialization_log.txt"
 user_command_log_filename = log_folder / "user_command_log.txt"
 user_event__log_filename = log_folder / "user_event_log.txt"
@@ -49,4 +49,3 @@ def create_log_files():
         log_msg += f"BotEvent logfile was created "
     log_msg = f"Logging is online."
     send_log(log_msg, "initialization")
-
