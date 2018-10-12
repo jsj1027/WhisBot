@@ -70,6 +70,7 @@ def main():
     whis.load_config("config.ini")
     whis.load_works()
     whis.run()
+    whis.on_ready()
     return
 
 
