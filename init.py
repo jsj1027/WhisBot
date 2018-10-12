@@ -42,7 +42,7 @@ Base.set_failed_training_programs(failed_training_programs)
 async def on_ready():
     try:
         guild = bot.get_guild(id=int(config['id']['guild_id']))
-        channel = bot.get_channel(id=int(config['channel_text']['bot_test_text']))
+        channel = bot.get_channel(id=int(config['channel_text']['announcement_channel_text']))
         if channel not in guild.channels:
             raise ValueError
         bot_info = await bot.application_info()
