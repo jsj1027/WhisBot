@@ -11,7 +11,7 @@ Base.load_config('config.ini')
 config = Base.get_config()
 
 
-log_location = 'initialization'
+log_location = Base.get_log_location()
 
 bot = commands.Bot(command_prefix="!")
 
@@ -29,31 +29,32 @@ for program in training_programs:
     try:
         bot.load_extension(program)
     except ValueError:
-        print(TypeError)
+        print(ValueError)
     except Exception as x:
         msg = f'{program} failed to come train the champions.' \
               f' The Omni-King will not be pleased.\n{type(x).__name__}: {x}'
         send_log(msg, log_location)
         failed_training_programs.append([program, type(x).__name__, x])
 
+Base.set_failed_training_programs(failed_training_programs)
 
 @bot.event
-async def on_ready(self):
+async def on_ready():
     try:
-        guild = self.bot.get_guild(id=int(self.config['id']['guild_id']))
-        channel = self.bot.get_channel(id=int(self.config['channel_text']['bot_test_text']))
+        guild = bot.get_guild(id=int(config['id']['guild_id']))
+        channel = bot.get_channel(id=int(config['channel_text']['bot_test_text']))
         if channel not in guild.channels:
             raise ValueError
-        bot_info = await self.bot.application_info()
+        bot_info = await bot.application_info()
         bot_name = bot_info.name
         message = f"'Hmmm, training begins now!'\n 'Ho Ho Ho, my name is {bot_name}," \
                   f" and this is the realm of the Omni-King!' - WhisBot\n"
         embed = discord.Embed(title='Whis is online', description=message)
         await channel.send(embed=embed)
-        send_log(message, self.log_location)
+        send_log(message, log_location)
     except ValueError:
-        send_log(str(f"{channel} not in {guild}"), self.log_location)
-    except Exception as e:
-        send_log(str(e), self.log_location)
+        send_log(str(f"{channel} not in {guild}"), log_location)
+    except Exception:
+        send_log(str(Exception), log_location)
 
 bot.run(config['token']['token'])

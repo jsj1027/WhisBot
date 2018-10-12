@@ -20,6 +20,9 @@ class Base:
 
     failed_training_programs = []
 
+    def get_log_location(self):
+        return self.log_location
+
     def get_config(self):
         return self.config
 

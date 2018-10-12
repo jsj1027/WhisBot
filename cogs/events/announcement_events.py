@@ -1,10 +1,10 @@
 import discord
-import configparser
 from log_sys.log_system import send_log
 import datetime
+from initialization import Base_class
 
-config = configparser.ConfigParser()
-config.read("config.ini")
+Base = Base_class.Base()
+config = Base.config
 
 log_location = "user_event"
 
@@ -17,10 +17,9 @@ class Announcements:
 
     async def on_message(self, message):
         try:
-            announcement_channel = discord.utils.get(message.guild.channels,
-                                                     id=config['channel_text']['announcement_channel_text'])
+            announcement_channel = self.bot.get_channel(id=int(config['channel_text']['announcement_channel_text']))
             channel = message.channel
-            if channel is not announcement_channel and '@everyone' in message.content:
+            if channel.id is not announcement_channel.id and '@everyone' in message.content:
                 await message.delete()
                 await channel.send("You can't use @ everyone in this battleground, it is annoying!"
                                    " Use @ here if you really need a call to arms.")
