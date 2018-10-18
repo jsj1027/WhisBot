@@ -6,10 +6,4 @@ data/
 .idea/
 config.ini
 log_files/
-black_list.json
 potato_count.txt
-test_black.json
-test_user.json
-test_white.json
-users.json
-white_list.json
