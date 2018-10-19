@@ -1,4 +1,3 @@
-import discord
 from log_sys.log_system import send_log
 import datetime
 from initialization import Base_class
