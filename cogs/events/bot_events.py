@@ -27,11 +27,11 @@ class BotEvents:
             print(str(e))
 
     async def on_member_join(self, member):
-    #TODO FIX THIS CRAP OF A METHOD
+    #TODO Maybe Fixed needs testing
         try:
             guild = member.guild
-            role = discord.utils.get(guild.roles, name="Mortals")
-            channel = discord.utils.get(guild.channels, id=config['channel_text']['introduction_channel_text'])
+            role = guild.get_role(int(config['role_name']['mortals']))
+            channel = self.bot.get_channel_id(int(config['channel_text']['introduction_channel_text']))
             msg = f'Welcome {member.mention} to the Universe 7 training camp! '
             await channel.send(msg)
             new_mem = f'{member.name} joined {member.server} on {datetime.datetime.now()}'
@@ -40,10 +40,12 @@ class BotEvents:
             await channel.send(content="You are now recognized by the Omni-King as a mortal wishing to social, grow, and"
                                        "most importantly train in his realm! "
                                        "Enjoy your stay, I will be watching over you")
-            give_role = f"{member.name} given Mortal role in {member.server} on {datetime.datetime.now()}"
-            send_log(give_role, log_location)
+            given_role = f"{member.name} given Mortal role in {member.server} on {datetime.datetime.now()}"
+            send_log(given_role, log_location)
         except discord.Forbidden:
-            await send_log("I don't have permission to add roles.", log_location)
+            send_log("I don't have permission to add roles.", log_location)
+        except Exception:
+            send_log(Exception)
 
 
 def setup(bot):
