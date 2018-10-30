@@ -38,6 +38,7 @@ for program in training_programs:
 
 Base.set_failed_training_programs(failed_training_programs)
 
+
 @bot.event
 async def on_ready():
     try:

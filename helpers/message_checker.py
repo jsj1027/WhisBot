@@ -22,6 +22,7 @@ def point_assignment(message_set):
         point_total += check_black_list_database(word)
     return point_total
 
+
 #//TODO HOLY CRAP WHY DOES THIS RETURN A NUMBER MAKE THIS NEVER RETURN A NUMBER THIS IS GARBAGE CODE
 def add_points(user_id_number, points_to_add, bad_words_used):
     user_point_total = 0
