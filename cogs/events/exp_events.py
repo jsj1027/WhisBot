@@ -24,5 +24,6 @@ class RankedLadder:
     def on_message(self, message):
 
 
+
 def setup(bot):
     bot.add_cog(RankedLadder(bot))

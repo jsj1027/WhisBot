@@ -12,6 +12,7 @@ class BotCommands:
         self.bot = bot
         print('Work "{}" loaded'.format(self.__class__.__name__))
 
+# Tells the user hello!
     @commands.command(name='hello')
     async def hello(self, ctx):
         try:
@@ -19,6 +20,7 @@ class BotCommands:
         except Exception as error:
             send_log(str(error), log_location)
 
+# Pings the user, not a latency command
     @commands.command(name="ping")
     async def ping(self, ctx):
         try:
@@ -28,6 +30,7 @@ class BotCommands:
         except Exception as error:
             send_log(str(error), log_location)
 
+# Shows how many times chat has spammed potato
     @commands.command(name="potato")
     async def potato(self, ctx):
         try:
@@ -36,6 +39,7 @@ class BotCommands:
         except Exception as error:
             send_log(str(error), log_location)
 
+# Shows user their generic discord user info
     @commands.command(pass_context=True, name="info")
     async def info(self, ctx):
         try:

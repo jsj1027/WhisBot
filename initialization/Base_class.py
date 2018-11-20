@@ -1,11 +1,9 @@
 # Whisbot by jsj1027/kaloshade
 
 import configparser
-from log_sys.log_system import *
 
 
 class Base:
-    # config for token credit to https://github.com/nh-server/Kurisu
     config = configparser.ConfigParser()
 
     log_location = 'initialization'
