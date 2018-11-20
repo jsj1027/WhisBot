@@ -36,7 +36,7 @@ class Base:
     def set_failed_training_programs(self, failed_programs):
         self.failed_training_programs = failed_programs
 
-    def get_conifg_id(self, group, item):
+    def get_config_id(self, group, item):
         config_item = self.config[group][item]
         if config_item.isdigit():
             return int(config_item)
