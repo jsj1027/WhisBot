@@ -21,8 +21,6 @@ class RankedLadder:
         log_folder = Path(Path.cwd().as_posix() + '/log_files')
         log_folder.mkdir(exist_ok=True)
 
-    def on_message(self, message):
-
 
 def setup(bot):
     bot.add_cog(RankedLadder(bot))
