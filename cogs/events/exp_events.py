@@ -17,9 +17,19 @@ class RankedLadder:
         self.bot = bot
         print(f'Work "{self.__class__.__name__}" loaded')
 
-    def on_ready(self):
-        log_folder = Path(Path.cwd().as_posix() + '/log_files')
-        log_folder.mkdir(exist_ok=True)
+    async def on_ready(self):
+        #call ready function of user_exp_database_manager.py
+
+    async def on_message(self, message):
+        user = message.author
+        user_checked_value = xp_check(user)
+        if user_checked_value:
+            return
+        user_exp = user_exp_return()
+        match = role_matches_current_exp(user.top_role, user_exp)
+        if not match:
+            return
+        change_top_role_here()
 
 
 
