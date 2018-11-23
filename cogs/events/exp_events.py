@@ -22,5 +22,6 @@ class RankedLadder:
         log_folder.mkdir(exist_ok=True)
 
 
+
 def setup(bot):
     bot.add_cog(RankedLadder(bot))

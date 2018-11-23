@@ -14,6 +14,7 @@ class Announcements:
         self.bot = bot
         print('Work "{}" loaded'.format(self.__class__.__name__))
 
+# Makes sure users cant use @everyone anywhere except the announcement channel.
     async def on_message(self, message):
         try:
             announcement_channel = self.bot.get_channel(id=int(config['channel_text']['announcement_channel_text']))

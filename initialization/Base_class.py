@@ -1,11 +1,9 @@
 # Whisbot by jsj1027/kaloshade
 
 import configparser
-from log_sys.log_system import *
 
 
 class Base:
-    # config for token credit to https://github.com/nh-server/Kurisu
     config = configparser.ConfigParser()
 
     log_location = 'initialization'
@@ -38,7 +36,7 @@ class Base:
     def set_failed_training_programs(self, failed_programs):
         self.failed_training_programs = failed_programs
 
-    def get_conifg_id(self, group, item):
+    def get_config_id(self, group, item):
         config_item = self.config[group][item]
         if config_item.isdigit():
             return int(config_item)
