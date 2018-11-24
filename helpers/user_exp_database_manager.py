@@ -1,12 +1,23 @@
 from datetime import datetime
 import json
 from pathlib import Path
+from datetime import timedelta
 
 user_exp_database_filename = Path("database_files/user_exp_database.json")
 
 user_exp_database = None
 
 addedExp = 100
+
+role_name_list =["goku", "vegeta", "frieza", "cell",
+                 "boo", "gohan", "18", "17",
+                 "trunks", "piccolo", "krillyn", "tien",
+                 "yamacha", "yajirobe", "mortals"]
+
+role_exp_amount = [90000, 78000, 67000, 57000,
+                    48000, 40000, 32000, 26000,
+                    20000, 14000, 10000, 6000,
+                    3000, 1000, 0]
 
 def get_user_exp_database():
     global user_exp_database
@@ -52,6 +63,10 @@ def add_exp(userID):
     save_user_exp_database()
     return
 
+def get_user_exp(userID):
+    local_user_exp_database = get_user_exp_database()
+    return local_user_exp_database[userID]["exp"]
+
 def get_last_time_user_given_exp(userID):
     local_user_exp_database = get_user_exp_database()
     return local_user_exp_database[userID]["last_given_exp"]
@@ -59,7 +74,10 @@ def get_last_time_user_given_exp(userID):
 def can_user_get_exp(userID):
     last_given_exp = get_last_time_user_given_exp(userID)
     last_given_exp = last_given_exp.strptime(last_given_exp, '%b-%d-%Y, %H:%M:%S')
-    #if the current time is less than 2 minutes from the last exp gain you dont get exp.
+    if datetime.now() < last_given_exp + timedelta(minutes= 2):
+        return False
+    else:
+        return True
 
 def ready():
     set_user_exp_database()
