@@ -88,7 +88,6 @@ def check_if_user_in_database(user_id):
     else:
         return False
 
-
 def grab_user_from_database(user_id):
     user_database = get_users()
     if check_if_user_in_database(user_id):

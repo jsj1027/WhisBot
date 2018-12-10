@@ -12,7 +12,6 @@ mod_command_log_filename = log_folder / "mod_command_log.txt"
 bot_moderation_log_filename = log_folder / "bot_moderation_log.txt"
 bot_event_log_filename = log_folder / "bot_event_log.txt"
 
-
 def switch(destination):
     return {
         "initialization": initialization_log_filename,
