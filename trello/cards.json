@@ -1,0 +1,18 @@
+{
+	"Stories": {
+		"lastNum": 0,
+		"S0": {
+			"number": 0,
+			"title": "TestCard",
+			"description": "TestDescription"
+		}
+	},
+	"Defects": {
+		"lastNum": 0,
+		"D0": {
+			"number": 0,
+			"title": "TestCard",
+			"description": "TestDescription"
+		}
+	}
+}
