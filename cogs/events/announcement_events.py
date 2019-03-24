@@ -1,6 +1,7 @@
 from log_sys.log_system import send_log
 import datetime
 from initialization import Base_class
+from discord.ext import commands
 
 Base = Base_class.Base()
 config = Base.config
@@ -8,7 +9,7 @@ config = Base.config
 log_location = "user_event"
 
 
-class Announcements:
+class Announcements(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot

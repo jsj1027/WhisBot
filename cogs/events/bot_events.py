@@ -1,4 +1,5 @@
 import discord
+from discord.ext import commands
 from initialization import Base_class
 from log_sys.log_system import *
 from helpers.counters import update_potato_count
@@ -9,12 +10,13 @@ config = Base.config
 log_location = "user_event"
 
 
-class BotEvents:
+class BotEvents(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
         print('Work "{}" loaded'.format(self.__class__.__name__))
-
+    
+    @commands.Cog.listener()
     async def on_message(self, message):
         try:
             if u"\U0001F954" in message.content:
@@ -26,6 +28,7 @@ class BotEvents:
         except Exception as e:
             send_log(str(e), log_location)
 
+    @commands.Cog.listener()
     async def on_member_join(self, member):
         try:
             guild = member.guild
