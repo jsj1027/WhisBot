@@ -35,16 +35,13 @@ def getLastItemNumber(workType):
         lastItemNumber = cardDataBase["Defects"]["lastNum"]
     return lastItemNumber
 
-def getItemDetails():
-    workType = input("Is this a story or a defect? (Not case sensitive): ")
-    if(workType.lower() not in ["s","d","story","defect"]):
+def getItemDetails(workType = None, title = None, description = None):
+    if isinstance(workType, None): workType = input("Is this a story or a defect? (Not case sensitive): ")
+    workType = workType.upper()
+    if(workType not in ["S","D"]):
         raise ValueError("Input entered was not s/d/story/defect. (Not case sensitive): ")
-    elif(workType.lower() in ["s","story"]):
-        workType = "S"
-    elif(workType.lower() in ["d","defect"]):
-        workType = "D"
-    title = input("What is the Story/Defect title: ")
-    description = input("What is the Story/Defect description?: ")
+    if isinstance(title, None): title = input("What is the Story/Defect title: ")
+    if isinstance(description, None): description = input("What is the Story/Defect description?: ")
     return [workType,title,description]
 
 def getCardDataBase():

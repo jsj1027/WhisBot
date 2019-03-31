@@ -1,9 +1,8 @@
 from behave import *
-from trello.stories.py import *
 
 @given("the story title is '{title}' ")
 def step_impl(context, title):
-    
+    assert isinstance(title, str)
 
 @given("we have behave installed")
 def step_impl(context):
