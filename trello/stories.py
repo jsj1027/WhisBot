@@ -36,7 +36,7 @@ def getLastItemNumber(workType):
     return lastItemNumber
 
 def getItemDetails(workType = None, title = None, description = None):
-    if isinstance(workType, None): workType = input("Is this a story or a defect? (Not case sensitive): ")
+    if (workType is None): workType = input("Is this a story or a defect? (Not case sensitive): ")
     workType = workType.upper()
     if(workType not in ["S","D"]):
         raise ValueError("Input entered was not s/d/story/defect. (Not case sensitive): ")
@@ -69,4 +69,4 @@ def main():
     print(cardDataBase)
     return
 
-main()
+#main()
