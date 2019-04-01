@@ -9,4 +9,4 @@ log_files/
 potato_count.txt
 
 \.history/
-.vscode\settings.json
+.vscode/settings.json
