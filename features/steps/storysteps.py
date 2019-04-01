@@ -1,21 +1,9 @@
 from behave import *
-# import sys
-# import os
-# currentDir = ""
-# while currentDir != 'WhisBot':
-#     pathSplit = os.getcwd().split("\\")
-#     pathLen = len(pathSplit)
-#     currentDir = pathSplit[pathLen-1]
-#     os.chdir("..")
-# os.chdir("WhisBot")
-# sys.path.append(os.getcwd())
-import os
-currentDir = os.getcwd()
-import fiximport
-fiximport.fix('WhisBot')
-from trello.stories import *
-fiximport.back(currentDir)
-main()
+def load_src(name, fpath):
+    import os, imp
+    return imp.load_source(name, os.path.join(os.path.dirname(__file__), fpath))
+load_src("stories", "../../trello/stories.py")
+from stories import *
 
 @given('the story title is {title}')
 def step_impl(context, title):
