@@ -6,6 +6,10 @@ https://stackoverflow.com/questions/40022220/attempted-relative-import-beyond-to
 def step_impl(context):
     pass
 
+@given("the story title is {title}")
+def step_impl(context,title):
+    pass
+
 @when("we implement a test")
 def step_impl(context):
     assert True is not False
