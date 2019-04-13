@@ -1,16 +1,18 @@
+from os import stat
 from pathlib import Path
 
-database_folder = Path("database_files")
-potato_count_file = database_folder / "potato_count.txt"
-#potato_count_file = open(potato_count_file)
+databaseFolder = Path("database_files")
+potatoCountFIle = databaseFolder / "potato_count.txt"
+Path.touch(potatoCountFIle) if not Path.exists(potatoCountFIle) else True
 
 
-def get_potato_count():
-    global potato_count_file
-    return potato_count_file.read_text()
+def getPotatoCount():
+    global potatoCountFIle
+    return potatoCountFIle.read_text() if stat(potatoCountFIle).st_size > 0 \
+        else 0
 
 
-def update_potato_count():
-    current_count = get_potato_count()
-    updated_count = int(current_count) + 1
-    potato_count_file.write_text(str(updated_count))
+def updatePotatoCount():
+    currentCount = getPotatoCount()
+    updatedCount = int(currentCount) + 1
+    potatoCountFIle.write_text(str(updatedCount))
