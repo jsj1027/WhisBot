@@ -1,5 +1,7 @@
 {
     "python.pythonPath": "B:\\Users\\Kaloshade\\AppData\\Local\\Programs\\Python\\Python37-32\\python.exe",
     "code-runner.customCommand": "python -m behave",
-    "code-runner.clearPreviousOutput": true
+    "code-runner.clearPreviousOutput": true,
+    "python.linting.enabled": true,
+    "python.linting.pep8Enabled": true
 }
