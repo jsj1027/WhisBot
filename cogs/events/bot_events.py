@@ -3,6 +3,8 @@ from discord.ext import commands
 from initialization import Base_class
 from log_sys.log_system import *
 from helpers.counters import update_potato_count
+from datetime import datetime
+
 
 Base = Base_class.Base()
 config = Base.config
@@ -21,9 +23,13 @@ class BotEvents(commands.Cog):
         try:
             if u"\U0001F954" in message.content:
                 update_potato_count()
-            elif ":iamjjSuperJJ:457429491766001664" in message.content:
+                log_msg = f"{message.author.name} with the id {message.author.id} "
+                f"triggered bot_events.on_message potato event on {datetime.now()}"
+                send_log(log_msg, log_location)
+            elif ":iamjjSuperJJ:" in message.content:
                 await message.channel.send(content="JJ's power is going over 9000!")
-                log_msg = f"{message.author} triggered bot_events.on_message event on {datetime.datetime.now()}"
+                log_msg = f"{message.author.name} with the id {message.author.id} "
+                f"triggered bot_events.on_message superjjevent on {datetime.now()}"
                 send_log(log_msg, log_location)
         except Exception as e:
             send_log(str(e), log_location)
