@@ -1,7 +1,7 @@
 from discord.ext import commands
 import datetime
 from log_sys.log_system import send_log
-import helpers.counters
+from helpers.counters import getPotatoCount
 
 log_location = "user_command"
 
@@ -35,7 +35,8 @@ class BotCommands(commands.Cog):
     async def potato(self, ctx):
         try:
             await ctx.send(content=f"Even the Omni-King messes up!"
-                                   f" Currently the audience potato count is {helpers.counters.get_potato_count()}")
+                                   f" Currently the audience potato count is\
+                                        {getPotatoCount()}")
         except Exception as error:
             send_log(str(error), log_location)
 
