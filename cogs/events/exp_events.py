@@ -10,7 +10,7 @@ config = Base.config
 log_location = "user_event"
 
 
-class RankedLadder:
+class RankedLadder(commands.Cog):
 
     default_experience = 100
 
