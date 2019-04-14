@@ -20,7 +20,7 @@ class BotEvents(commands.Cog):
     async def on_message(self, message):
         try:
             if u"\U0001F954" in message.content:
-                update_potato_count()
+                updatePotatoCount()
                 log_msg = f"{message.author.name} with the id"
                 f" {message.author.id} triggered bot_events.on_message\
                      potato event on {datetime.now()}"
