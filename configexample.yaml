@@ -1,0 +1,27 @@
+token: Bot token
+
+textChannels:
+    introduction: Name of the introduction channel
+    announcement: Name of the announcements channel
+    general: Name of the general channel
+    botTest: Name of the bot test channel
+
+voiceChannels:
+    afk: Name of the voice AFK Channel
+
+ids: #These are ids
+    whis:  ID of Whis bot
+    guild: Guild ID
+    author: Author of Whisbot
+
+roles: #These are names
+    serverOwner: Name of the role the server owner has, has the highest permissions
+    admin: Name of the role of the server admins
+    whis: Name of WhisBot
+    timeoutRole: Name of the timeout role
+    mortals: ID of the general user role
+
+discordLink: discord link for server invitation should link to introductions channel
+
+pubg:
+    apiKey: Pubg API Key
