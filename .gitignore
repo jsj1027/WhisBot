@@ -7,6 +7,6 @@ data/
 config.ini
 log_files/
 potato_count.txt
-
+secrets.yaml
 \.history/
 .vscode/settings.json

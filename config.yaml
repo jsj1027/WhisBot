@@ -1,0 +1,27 @@
+token: 
+
+textChannels: #These are ids# real one for jj server443062130678431745 intro channel
+	introduction: 318471310445641730
+	announcement: 443067343879274496
+	general: 432421517671006240
+	botTest: 446093321580969984
+
+voiceChannels: #These are names
+	afk: AFK
+
+ids: #These are ids
+	whis: 443117417108078593
+	guild: 432421517671006238
+	author: 142804332444778496
+
+roles: #These are names
+	serverOwner: Omni-King
+	admin: DaiShinKhan
+	whis: Whis
+	timeoutRole: Timeout
+	mortals: 442825903203024927
+
+discordLink: https://discord.gg/3stMNHT
+
+pubg:
+	apiKey: 
