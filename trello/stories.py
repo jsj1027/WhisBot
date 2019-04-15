@@ -3,6 +3,7 @@ from pathlib import Path
 
 cardDataBase = None
 
+
 def addCardToDataBase(key, cardDetails):
     global cardDataBase
     if("S" in key):
@@ -16,6 +17,7 @@ def addCardToDataBase(key, cardDetails):
     json.dump(cardDataBase, cardDataBaseFile)
     return
 
+
 def createCardDetails(itemDetails, newItemNumber):
     title = itemDetails[1]
     description = itemDetails[2]
@@ -23,8 +25,10 @@ def createCardDetails(itemDetails, newItemNumber):
     newCard = {"number":newItemNumber, "title": title, "description": description}
     return key,newCard
 
+
 def getNewItemNumber(workType):
     return getLastItemNumber(workType)+1
+
 
 def getLastItemNumber(workType):
     global cardDataBase
@@ -35,6 +39,7 @@ def getLastItemNumber(workType):
         lastItemNumber = cardDataBase["Defects"]["lastNum"]
     return lastItemNumber
 
+
 def getItemDetails(workType = None, title = None, description = None):
     if (workType is None): workType = input("Is this a story or a defect? (Not case sensitive): ")
     workType = workType.upper()
@@ -44,6 +49,7 @@ def getItemDetails(workType = None, title = None, description = None):
     if isinstance(description, None): description = input("What is the Story/Defect description?: ")
     return [workType,title,description]
 
+
 def getCardDataBase():
     global cardDataBase
     cardDataBaseFileName = getCardDBFileName()
@@ -51,12 +57,14 @@ def getCardDataBase():
     cardDataBase = json.load(cardDataBaseFile)
     return
 
+
 def getCardDBFileName():
     cardDataBaseFolder = Path(Path.cwd().as_posix())
     if(cardDataBaseFolder.name is not "trello"):
         cardDataBaseFolder / "trello"
     cardDataBaseFileName = cardDataBaseFolder / "cards.json"
     return cardDataBaseFileName
+
 
 def main():
     getCardDataBase()
@@ -69,4 +77,4 @@ def main():
     print(cardDataBase)
     return
 
-#main()
+# main()

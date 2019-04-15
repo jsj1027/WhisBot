@@ -1,10 +1,9 @@
-import configparser
+from utils.openYaml import getYaml
 from log_sys.log_system import *
 from helpers.message_checker import *
 
-config = configparser.ConfigParser()
-config.read("config.ini")
-whis_id = config['id']['whis_id']
+config = getYaml()
+whisId = config['ids']['whis']
 log_location = "bot_moderation"
 destination = "bot_moderation"
 
@@ -27,7 +26,7 @@ class MessageEvents:
             user_ban_reset(message.author.id)
             msg = f"You have been banned from {message.server} due to repeated use of terrible language. No one is" \
                   f" required to be a saint here but we do enforce restrictions upon the worst words. If you feel" \
-                  f" that this was a mistake please send a message to {config['role_name']['server_owner']}"
+                  f" that this was a mistake please send a message to {config['roles']['serverOwner']}"
             await self.bot.send_message(message.author, msg)
         else:
             send_log(f"{message.author} was warned about their use of the word(s) {bad_words}. Their current point"
@@ -35,11 +34,11 @@ class MessageEvents:
             msg = f"You are being warned that your language on {message.server} will not be tolerated. You have been" \
                   f" found saying these word(s) {bad_words}. Please refrain from repeating your this, and if you feel" \
                   f" this to be a mistake please contact" \
-                  f" {config['role_name']['server_owner']} or {config['id']['author_id']}"
+                  f" {config['roles']['serverOwner']} or {config['ids']['author']}"
             await self.bot.send_message(message.author, msg)
 
     async def on_message_delete(self, message):
-        if message.author.id == whis_id:
+        if message.author.id == whisId:
             pass
         else:
             log_msg = f"{message.author}, {message.author.id}, deleted their message on {datetime.datetime.now()}.\n" \
@@ -47,7 +46,7 @@ class MessageEvents:
             send_log(log_msg, log_location)
 
     async def on_message_edit(self, before, after):
-        if before.author.id == whis_id:
+        if before.author.id == whisId:
             pass
         else:
             log_msg = f"{before.author} changed their message.\n" \
