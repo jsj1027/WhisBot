@@ -1,10 +1,9 @@
 from log_sys.log_system import send_log
 import datetime
-from initialization import Base_class
 from discord.ext import commands
+from utils.openYaml import getYaml
 
-Base = Base_class.Base()
-config = Base.config
+config = getYaml()
 
 log_location = "user_event"
 
@@ -18,7 +17,7 @@ class Announcements(commands.Cog):
 # Makes sure users cant use @everyone anywhere except the announcement channel.
     async def on_message(self, message):
         try:
-            announcement_channel = self.bot.get_channel(id=int(config['channel_text']['announcement_channel_text']))
+            announcement_channel = self.bot.get_channel(id=config['textChannels']['announcement'])
             channel = message.channel
             if channel.id is not announcement_channel.id and '@everyone' in message.content:
                 await message.delete()

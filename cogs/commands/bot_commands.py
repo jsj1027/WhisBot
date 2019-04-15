@@ -1,7 +1,7 @@
 from discord.ext import commands
 import datetime
 from log_sys.log_system import send_log
-from helpers.counters import getPotatoCount
+from utils.counters import getPotatoCount
 
 log_location = "user_command"
 

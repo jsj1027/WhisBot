@@ -1,11 +1,10 @@
 import discord
 from discord.ext import commands
-from initialization import Base_class
 from log_sys.log_system import *
-from helpers.counters import updatePotatoCount
+from utils.counters import updatePotatoCount
+from utils.openYaml import getYaml
 
-Base = Base_class.Base()
-config = Base.config
+config = getYaml()
 
 log_location = "user_event"
 
@@ -40,9 +39,9 @@ class BotEvents(commands.Cog):
     async def on_member_join(self, member):
         try:
             guild = member.guild
-            role = guild.get_role(int(config['role_name']['mortals']))
+            role = guild.get_role(config['roles']['mortals'])
             channel = self.bot.get_channel(
-                int(config['channel_text']['introduction_channel_text']))
+                config['textChannels']['introduction'])
             msg = f'Welcome {member.mention} to the Universe 7 training camp! '
             await channel.send(msg)
             new_mem_msg = f'{member.name} joined {guild.name} \

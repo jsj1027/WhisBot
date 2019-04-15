@@ -2,10 +2,10 @@ import discord
 from pathlib import Path
 from log_sys.log_system import send_log
 from initialization import Base_class
-from helpers.user_exp_database_manager import *
+from utils.user_exp_database_manager import *
+from utils.openYaml import getYaml
 
-Base = Base_class.Base()
-config = Base.config
+config = getYaml()
 
 log_location = "user_event"
 
@@ -33,7 +33,6 @@ class RankedLadder(commands.Cog):
         if not match:
             return
         change_top_role_here()
-
 
 
 def setup(bot):
