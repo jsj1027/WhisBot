@@ -19,21 +19,22 @@ class MessageEvents:
         if not bad_words:
             return
         user_gained_points = point_assignment(bad_words)
-        user_point_total = add_points(message.author.id, user_gained_points, bad_words)
+        user_point_total = add_points(
+            message.author.id, user_gained_points, bad_words)
         if user_point_total >= 4:
             await self.bot.ban(message.author)
             send_log(f"{message.author} was banned.", destination)
             user_ban_reset(message.author.id)
-            msg = f"You have been banned from {message.server} due to repeated use of terrible language. No one is" \
-                  f" required to be a saint here but we do enforce restrictions upon the worst words. If you feel" \
+            msg = f"You have been banned from {message.server} due to repeated use of terrible language. No one is"
+                  f" required to be a saint here but we do enforce restrictions upon the worst words. If you feel"
                   f" that this was a mistake please send a message to {config['roles']['serverOwner']}"
             await self.bot.send_message(message.author, msg)
         else:
             send_log(f"{message.author} was warned about their use of the word(s) {bad_words}. Their current point"
                      f" total is {user_point_total}", destination)
-            msg = f"You are being warned that your language on {message.server} will not be tolerated. You have been" \
-                  f" found saying these word(s) {bad_words}. Please refrain from repeating your this, and if you feel" \
-                  f" this to be a mistake please contact" \
+            msg = f"You are being warned that your language on {message.server} will not be tolerated. You have been"
+                  f" found saying these word(s) {bad_words}. Please refrain from repeating your this, and if you feel"
+                  f" this to be a mistake please contact"
                   f" {config['roles']['serverOwner']} or {config['ids']['author']}"
             await self.bot.send_message(message.author, msg)
 
@@ -51,7 +52,7 @@ class MessageEvents:
         else:
             log_msg = f"{before.author} changed their message.\n" \
                       f"Their message was '{before.content}'\n ,now it is " \
-                       f" '{after.content}' on {datetime.datetime.now()}"
+                f" '{after.content}' on {datetime.datetime.now()}"
             send_log(log_msg, log_location)
             print("message was edited")
 

@@ -12,6 +12,7 @@ mod_command_log_filename = log_folder / "mod_command_log.txt"
 bot_moderation_log_filename = log_folder / "bot_moderation_log.txt"
 bot_event_log_filename = log_folder / "bot_event_log.txt"
 
+
 def switch(destination):
     return {
         "initialization": initialization_log_filename,
@@ -30,7 +31,7 @@ def send_log(log_message, destination):
 
 
 def create_log_files():
-    log_msg=""
+    log_msg = ""
     if not initialization_log_filename.exists():
         initialization_log_filename.touch()
         log_msg += f"Initialization logfile was created"

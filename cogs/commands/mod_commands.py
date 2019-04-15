@@ -1,16 +1,16 @@
 import discord
 import asyncio
 import datetime
-from helpers.time_parse import *
+from utils.time_parse import *
 from permission_check import *
-from helpers.command_parse import *
+from utils.command_parse import *
 from log_sys.log_system import send_log
+from utils.openYaml import getYaml
 
-config = configparser.ConfigParser()
-config.read("config.ini")
-server_owner = config['role_name']['server_owner']
-admin = config['role_name']['admin']
-whis = config['id']['whis_id']
+config = getYaml()
+server_owner = config['roles']['serverOwner']
+admin = config['roles']['admin']
+whis = config['ids']['whis']
 
 log_location = "mod_command"
 
@@ -29,7 +29,7 @@ class ModCommands(commands.Cog):
             raise commands.TooManyArguments("Limit use to one person at a time.")
         victim = victim[0]
         command_list = command_parse(args)
-        timeout_role = discord.utils.get(ctx.message.server.roles, name=config['role_name']['timeout_role'])
+        timeout_role = discord.utils.get(ctx.message.server.roles, name=config['roles']['timeoutRole'])
         timeout_date = datetime.datetime.now()
         reason = f"You have been deemed an annoyance, but only a minor one, and are being put in stasis. " \
                  f"This was on order of {ctx.message.author}"
@@ -45,7 +45,7 @@ class ModCommands(commands.Cog):
         timeout_until = time_parse(command_list)
         await self.bot.add_roles(victim, timeout_role)
         if victim.voice_channel is not None:
-            channel = discord.utils.get(ctx.message.server.channels, name=config['channel_voice']['afk_channel'])
+            channel = discord.utils.get(ctx.message.server.channels, name=config['voiceChannels']['afk'])
             await self.bot.move_member(victim, channel)
         await self.bot.send_message(victim, reason)
         log_msg = f"{victim.mention} was timed out until {timeout_date+timedelta(seconds=timeout_until)}, by {ctx.message.author},  on {datetime.datetime.now()}"
@@ -97,6 +97,7 @@ class ModCommands(commands.Cog):
         elif isinstance(error, commands.TooManyArguments):
             await self.bot.send_message(ctx.message.channel, error)
             print(error)
+
 
 def setup(bot):
     bot.add_cog(ModCommands(bot))
