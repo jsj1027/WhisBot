@@ -4,7 +4,7 @@ import discord
 from discord.ext import commands
 from log_sys.log_system import *
 from initialization import Base_class
-from utils.openYaml import getYaml()
+from utils.openYaml import getYaml
 
 Base = Base_class.Base()
 config = getYaml()
@@ -47,8 +47,9 @@ async def on_ready():
             raise ValueError
         bot_info = await bot.application_info()
         bot_name = bot_info.name
-        message = f"'Hmmm, training begins now!'\n 'Ho Ho Ho, my name is {bot_name},"
-                  f" and this is the realm of the Omni-King!' - WhisBot\n"
+        message = (f"'Hmmm, training begins now!'\n 'Ho Ho Ho, my name"
+                   "is {bot_name}, and this is the realm of the Omni-King!'"
+                   " - WhisBot\n")
         embed = discord.Embed(title='Whis is online', description=message)
         await channel.send(embed=embed)
         send_log(message, log_location)

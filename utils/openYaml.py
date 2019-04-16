@@ -14,7 +14,6 @@ def openYaml():
 
 def getYaml():
     global yamlFile
-    print(yamlFile)
     if(yamlFile is None):
         openYaml()
         return yamlFile
