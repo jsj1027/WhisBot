@@ -3,9 +3,13 @@ import yaml
 
 class yamlLoader:
 
-    def __init__(self, fileName):
+    def __init__(self, fileName=None):
         self._fileName = fileName
         self._fileObj = None
+
+    @property
+    def fileName(self):
+        return self._fileName
 
     @property
     def fileObj(self):
@@ -18,13 +22,3 @@ class yamlLoader:
                     print(exc)
         else:
             return self._fileObj
-
-    # @fileObj.setter
-    # def fileObj(self):
-    #     if(self.fileName is None):
-    #         raise AttributeError("you have not set a fileName")
-    #     with open(str(fileName), "r") as stream:
-    #         try:
-    #             self._fileObj = yaml.safe_load(stream)
-    #         except yaml.YAMLError as exc:
-    #             print(exc)
