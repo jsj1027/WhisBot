@@ -26,16 +26,16 @@ class MessageEvents:
             send_log(f"{message.author} was banned.", destination)
             user_ban_reset(message.author.id)
             msg = f"You have been banned from {message.server} due to repeated use of terrible language. No one is"
-                  f" required to be a saint here but we do enforce restrictions upon the worst words. If you feel"
-                  f" that this was a mistake please send a message to {config['roles']['serverOwner']}"
+            f" required to be a saint here but we do enforce restrictions upon the worst words. If you feel"
+            f" that this was a mistake please send a message to {config['roles']['serverOwner']}"
             await self.bot.send_message(message.author, msg)
         else:
             send_log(f"{message.author} was warned about their use of the word(s) {bad_words}. Their current point"
                      f" total is {user_point_total}", destination)
             msg = f"You are being warned that your language on {message.server} will not be tolerated. You have been"
-                  f" found saying these word(s) {bad_words}. Please refrain from repeating your this, and if you feel"
-                  f" this to be a mistake please contact"
-                  f" {config['roles']['serverOwner']} or {config['ids']['author']}"
+            f" found saying these word(s) {bad_words}. Please refrain from repeating your this, and if you feel"
+            f" this to be a mistake please contact"
+            f" {config['roles']['serverOwner']} or {config['ids']['author']}"
             await self.bot.send_message(message.author, msg)
 
     async def on_message_delete(self, message):
