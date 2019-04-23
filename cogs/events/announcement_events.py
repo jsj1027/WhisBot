@@ -1,9 +1,10 @@
 from log_sys.log_system import send_log
 import datetime
 from discord.ext import commands
-from utils.openYaml import getYaml
+from utils.openYaml import yamlLoader
 
-config = getYaml()
+config = yamlLoader('config.yaml').fileObj
+
 
 log_location = "user_event"
 

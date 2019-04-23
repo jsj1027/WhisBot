@@ -1,9 +1,8 @@
 #import discord
 from discord.ext import commands
-import configparser
+from utils.openYaml import yamlLoader
 
-config = configparser.ConfigParser()
-config.read("config.ini")
+config = yamlLoader('config.yaml').fileObj
 server_owner = config['role_name']['server_owner']
 admin = config['role_name']['admin']
 whis = config['id']['whis_id']

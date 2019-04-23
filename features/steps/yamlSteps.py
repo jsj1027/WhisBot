@@ -1,5 +1,5 @@
 from behave import *
-from utils.openYaml2 import *
+from utils.openYaml import *
 import operator
 
 

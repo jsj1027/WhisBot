@@ -17,7 +17,7 @@
     "window.newWindowDimensions": "maximized",
     "bracket-pair-colorizer-2.highlightActiveScope": true,
     "cucumberautocomplete.steps": [
-        "features/steps/*.py",
+        "features/steps/*.py"
     ],
     "cucumberautocomplete.syncfeatures": "features/*feature",
     "cucumberautocomplete.strictGherkinCompletion": true

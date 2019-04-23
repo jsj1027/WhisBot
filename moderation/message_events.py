@@ -1,8 +1,8 @@
-from utils.openYaml import getYaml
 from log_sys.log_system import *
-from helpers.message_checker import *
+from utils.message_checker import *
+from utils.openYaml import yamlLoader
 
-config = getYaml()
+config = yamlLoader('config.yaml').fileObj
 whisId = config['ids']['whis']
 log_location = "bot_moderation"
 destination = "bot_moderation"

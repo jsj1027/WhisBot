@@ -2,9 +2,9 @@ import discord
 from discord.ext import commands
 from log_sys.log_system import *
 from utils.counters import updatePotatoCount
-from utils.openYaml import getYaml
+from utils.openYaml import yamlLoader
 
-config = getYaml()
+config = yamlLoader('config.yaml').fileObj
 
 log_location = "user_event"
 
