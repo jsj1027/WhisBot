@@ -17,6 +17,7 @@ class yamlLoader:
             with open(str(self._fileName), "r") as stream:
                 try:
                     self._fileObj = yaml.safe_load(stream)
+                    stream.close()
                     return self._fileObj
                 except yaml.YAMLError as exc:
                     print(exc)
