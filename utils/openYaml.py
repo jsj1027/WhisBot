@@ -1,21 +1,24 @@
 import yaml
 
-yamlFile = None
 
+class yamlLoader:
 
-def openYaml():
-    with open("config.yaml", "r") as stream:
-        try:
-            global yamlFile
-            yamlFile = yaml.safe_load(stream)
-        except yaml.YAMLError as exc:
-            print(exc)
+    def __init__(self, fileName=None):
+        self._fileName = fileName
+        self._fileObj = None
 
+    @property
+    def fileName(self):
+        return self._fileName
 
-def getYaml():
-    global yamlFile
-    if(yamlFile is None):
-        openYaml()
-        return yamlFile
-    else:
-        return yamlFile
+    @property
+    def fileObj(self):
+        if(self._fileObj is None):
+            with open(str(self._fileName), "r") as stream:
+                try:
+                    self._fileObj = yaml.safe_load(stream)
+                    return self._fileObj
+                except yaml.YAMLError as exc:
+                    print(exc)
+        else:
+            return self._fileObj
