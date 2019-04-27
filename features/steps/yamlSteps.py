@@ -2,6 +2,9 @@ from behave import *
 # from features.support.yamlSupport import *
 from utils.openYaml import *
 import operator
+from database.databaseManager import getDatabase
+
+config = getDatabase("config")
 
 
 @given("the config is loaded")

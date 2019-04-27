@@ -1,7 +1,9 @@
 from log_sys.log_system import *
 from utils.message_checker import *
 from utils.openYaml import yamlLoader
+from database.databaseManager import getDatabase
 
+config = getDatabase("config")
 config = yamlLoader('config.yaml').fileObj
 whisId = config['ids']['whis']
 log_location = "bot_moderation"

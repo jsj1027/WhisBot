@@ -6,7 +6,9 @@ from permission_check import *
 from utils.command_parse import *
 from log_sys.log_system import send_log
 from utils.openYaml import yamlLoader
+from database.databaseManager import getDatabase
 
+config = getDatabase("config")
 config = yamlLoader('config.yaml').fileObj
 server_owner = config['roles']['serverOwner']
 admin = config['roles']['admin']

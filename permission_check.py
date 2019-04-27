@@ -1,7 +1,9 @@
 #import discord
 from discord.ext import commands
 from utils.openYaml import yamlLoader
+from database.databaseManager import getDatabase
 
+config = getDatabase("config")
 config = yamlLoader('config.yaml').fileObj
 server_owner = config['role_name']['server_owner']
 admin = config['role_name']['admin']

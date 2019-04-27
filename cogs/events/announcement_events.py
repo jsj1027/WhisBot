@@ -2,7 +2,9 @@ from log_sys.log_system import send_log
 import datetime
 from discord.ext import commands
 from utils.openYaml import yamlLoader
+from database.databaseManager import getDatabase
 
+config = getDatabase("config")
 config = yamlLoader('config.yaml').fileObj
 
 
