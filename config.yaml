@@ -11,7 +11,7 @@ voiceChannels: #These are names
 
 ids: #These are ids
     whis: 443117417108078593
-    guild: 432421517671006238
+    guild: 318471310445641730 # real 432421517671006238
     author: 142804332444778496
 
 roles: #These are names

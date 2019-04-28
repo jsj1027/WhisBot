@@ -1,0 +1,2 @@
+commands:
+  hello: Hello young {ctx.author.top_role}, how are you today?

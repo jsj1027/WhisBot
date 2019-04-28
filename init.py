@@ -49,15 +49,14 @@ async def on_ready():
             raise ValueError
         bot_info = await bot.application_info()
         bot_name = bot_info.name
-        message = (f"'Hmmm, training begins now!'\n 'Ho Ho Ho, my name"
-                   "is {bot_name}, and this is the realm of the Omni-King!'"
-                   " - WhisBot\n")
+        message = (f"Hmmm, training begins now!\n Ho Ho Ho, my name "
+                   f"is {bot_name}, and this is the realm of the Omni-King!")
         embed = discord.Embed(title='Whis is online', description=message)
         await channel.send(embed=embed)
         send_log(message, log_location)
     except ValueError:
         send_log(str(f"{channel} not in {guild}"), log_location)
     except Exception:
-        send_log(str(Exception), log_location)
+        send_log(str(f"{Exception}"), log_location)
 
 bot.run(config['token'])

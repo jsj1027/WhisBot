@@ -1,7 +1,7 @@
 from os import stat
 from pathlib import Path
 
-databaseFolder = Path("database_files")
+databaseFolder = Path("database")
 potatoCountFIle = databaseFolder / "potato_count.txt"
 Path.touch(potatoCountFIle) if not Path.exists(potatoCountFIle) else True
 

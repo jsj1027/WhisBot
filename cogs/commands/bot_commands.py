@@ -2,8 +2,11 @@ from discord.ext import commands
 import datetime
 from log_sys.log_system import send_log
 from utils.counters import getPotatoCount
+from database.databaseManager import getDatabase
+import re
 
 log_location = "user_command"
+messages = getDatabase('message')
 
 
 class BotCommands(commands.Cog):
@@ -16,9 +19,12 @@ class BotCommands(commands.Cog):
     @commands.command(name='hello')
     async def hello(self, ctx):
         try:
-            await ctx.send(content=f'Hello young {ctx.author.top_role}, how are you today?')
+            x = ctx
+            message = messages['commands']['hello']
+            message = re.sub(r'{(.*?)}', ctx.author.top_role.name, message)
+            await ctx.send(content=message)
         except Exception as error:
-            send_log(str(error), log_location)
+            send_log(f"{error.with_traceback}", log_location)
 
 # Pings the user, not a latency command
     @commands.command(name="ping")

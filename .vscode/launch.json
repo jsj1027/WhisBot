@@ -8,7 +8,7 @@
             "name": "Python WhisBot",
             "type": "python",
             "request": "launch",
-            "program": "B:/Users/Kaloshade/CodeProjects/WhisBot/init.py",
+            "program": "C:/Users/Javis Kalo Johnson/Desktop/Projects/WhisBot/init.py",
             "console": "integratedTerminal",
         },
         {
