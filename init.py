@@ -4,10 +4,12 @@ import discord
 from discord.ext import commands
 from log_sys.log_system import *
 from initialization import Base_class
-from utils.openYaml import getYaml
+from utils.openYaml import yamlLoader
+from database.databaseManager import getDatabase
 
 Base = Base_class.Base()
-config = getYaml()
+config = getDatabase("config")
+config = yamlLoader('config.yaml').fileObj
 
 log_location = Base.get_log_location()
 

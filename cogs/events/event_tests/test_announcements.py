@@ -2,7 +2,9 @@ from unittest import TestCase
 import discord
 from discord.ext import commands
 import configparser
+from database.databaseManager import getDatabase
 
+config = getDatabase("config")
 config = configparser.ConfigParser()
 config.read("../../../config.ini")
 

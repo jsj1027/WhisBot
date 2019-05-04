@@ -1,4 +1,4 @@
-from helpers.dictionary import *
+from utils.dictionary import *
 
 
 def check_contents(message):

@@ -5,11 +5,21 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File (Integrated Terminal)",
+            "name": "Python WhisBot",
             "type": "python",
             "request": "launch",
             "program": "B:/Users/Kaloshade/CodeProjects/WhisBot/init.py",
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+        },
+        {
+            "name": "Python Behave Steps",
+            "type": "python",
+            "request": "launch",
+            "program": "B:/Users/Kaloshade/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/behave/__main__.py",
+            "console": "integratedTerminal",
+            "args": [
+                "features"
+            ],
         },
         {
             "name": "Python: Remote Attach",
