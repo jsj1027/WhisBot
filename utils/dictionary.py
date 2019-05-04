@@ -3,7 +3,7 @@ from pathlib import Path
 
 # values are [[bad words used list], total points, banned_x_times]
 
-database_folder = Path("database_files")
+database_folder = Path("database")
 black_list_filename = database_folder / "test_black.json"
 white_list_filename = database_folder / "test_white.json"
 user_database_filename = database_folder / "test_user.json"

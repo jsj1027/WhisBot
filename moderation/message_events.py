@@ -1,3 +1,4 @@
+from discord.ext import commands
 from log_sys.log_system import *
 from utils.message_checker import *
 from utils.openYaml import yamlLoader
@@ -10,12 +11,13 @@ log_location = "bot_moderation"
 destination = "bot_moderation"
 
 
-class MessageEvents:
+class MessageEvents(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
         print('Work "{}" loaded'.format(self.__class__.__name__))
 
+    @commands.Cog.listener()
     async def on_message(self, message):
         bad_words = check_contents(message)
         if not bad_words:
@@ -23,23 +25,24 @@ class MessageEvents:
         user_gained_points = point_assignment(bad_words)
         user_point_total = add_points(
             message.author.id, user_gained_points, bad_words)
-        if user_point_total >= 4:
+        if user_point_total >= 4:# move all this to a function
             await self.bot.ban(message.author)
             send_log(f"{message.author} was banned.", destination)
             user_ban_reset(message.author.id)
-            msg = f"You have been banned from {message.server} due to repeated use of terrible language. No one is"
+            msg = f"You have been banned from {message.guild} due to repeated use of terrible language. No one is"
             f" required to be a saint here but we do enforce restrictions upon the worst words. If you feel"
-            f" that this was a mistake please send a message to {config['roles']['serverOwner']}"
+            f" that this was a mistake please send a message to {config['roles']['serverOwner']}" #change too omni or admins
             await self.bot.send_message(message.author, msg)
         else:
             send_log(f"{message.author} was warned about their use of the word(s) {bad_words}. Their current point"
                      f" total is {user_point_total}", destination)
-            msg = f"You are being warned that your language on {message.server} will not be tolerated. You have been"
+            msg = f"You are being warned that your language on {message.guild} will not be tolerated. You have been"
             f" found saying these word(s) {bad_words}. Please refrain from repeating your this, and if you feel"
             f" this to be a mistake please contact"
-            f" {config['roles']['serverOwner']} or {config['ids']['author']}"
+            f" {config['roles']['serverOwner']} or {config['ids']['author']}"# chabne to omni or admins
             await self.bot.send_message(message.author, msg)
 
+    @commands.Cog.listener()
     async def on_message_delete(self, message):
         if message.author.id == whisId:
             pass
@@ -48,6 +51,7 @@ class MessageEvents:
                       f"Their message was '{message.content}'."
             send_log(log_msg, log_location)
 
+    @commands.Cog.listener()
     async def on_message_edit(self, before, after):
         if before.author.id == whisId:
             pass

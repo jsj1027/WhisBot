@@ -3,7 +3,7 @@
     "editor.suggestSelection": "first",
     "editor.autoClosingQuotes": "always",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "python.pythonPath": "",
+    "python.pythonPath": "C:\\Users\\Javis Kalo Johnson\\AppData\\Local\\Programs\\Python\\Python37-32\\python.exe",
     "python.jediEnabled": false,
     "python.autoComplete.addBrackets": false,
     "python.linting.enabled": true,
@@ -14,7 +14,7 @@
     "code-runner.runInTerminal": true,
     "code-runner.customCommand": "python -m behave",
     "code-runner.executorMap": {
-        "python": "$pythonPath -m //$fullFileName"
+        "python": "python"
     },
     "files.autoSave": "afterDelay",
     "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",

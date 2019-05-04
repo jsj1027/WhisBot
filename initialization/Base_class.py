@@ -11,9 +11,9 @@ class Base:
     training_programs = [
         'cogs.events.bot_events',
         'cogs.events.announcement_events',
-        'cogs.commands.bot_commands'  # ,
+        'cogs.commands.bot_commands',
+        'moderation.message_events'
         #  'cogs.mod_commands',
-        #  'moderation.message_events'
     ]
 
     failed_training_programs = []
