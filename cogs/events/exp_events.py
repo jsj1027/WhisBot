@@ -3,9 +3,11 @@ from pathlib import Path
 from log_sys.log_system import send_log
 from initialization import Base_class
 from utils.user_exp_database_manager import *
-from utils.openYaml import getYaml
+from utils.openYaml import yamlLoader
+from database.databaseManager import getDatabase
 
-config = getYaml()
+config = getDatabase("config")
+config = yamlLoader('config.yaml').fileObj
 
 log_location = "user_event"
 

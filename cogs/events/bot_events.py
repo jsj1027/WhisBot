@@ -2,9 +2,11 @@ import discord
 from discord.ext import commands
 from log_sys.log_system import *
 from utils.counters import updatePotatoCount
-from utils.openYaml import getYaml
+from utils.openYaml import yamlLoader
+from database.databaseManager import getDatabase
 
-config = getYaml()
+config = getDatabase("config")
+config = yamlLoader('config.yaml').fileObj
 
 log_location = "user_event"
 
@@ -45,17 +47,17 @@ class BotEvents(commands.Cog):
             msg = f'Welcome {member.mention} to the Universe 7 training camp! '
             await channel.send(msg)
             new_mem_msg = (f"{member.name} joined {guild.name}"
-                            " on {datetime.datetime.now()}")
+                           " on {datetime.datetime.now()}")
             send_log(new_mem_msg, log_location)
             await member.add_roles(role, reason=(f"User"
-                    "joined the guild {guild.name}"))
+                                                 "joined the guild {guild.name}"))
             await channel.send(content=("You are "
-                 "now recognized by the Omni-King as a mortal wishing to socialize"
-                     ", grow, and most importantly train in his realm!"
-                         " Enjoy your stay, I will be watching over you"))
+                                        "now recognized by the Omni-King as a mortal wishing to socialize"
+                                        ", grow, and most importantly train in his realm!"
+                                        " Enjoy your stay, I will be watching over you"))
             given_role_msg = (f"{member.name}"
-                " given {role.name} role in {guild.name}"
-                     " on {datetime.datetime.now()}")
+                              " given {role.name} role in {guild.name}"
+                              " on {datetime.datetime.now()}")
             send_log(given_role_msg, log_location)
         except discord.Forbidden:
             send_log("I don't have permission to add roles.", log_location)

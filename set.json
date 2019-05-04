@@ -1,0 +1,24 @@
+{
+    "workbench.iconTheme": "vscode-icons",
+    "editor.suggestSelection": "first",
+    "editor.autoClosingQuotes": "always",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "python.jediEnabled": false,
+    "python.autoComplete.addBrackets": true,
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.enableAppInsights": false,
+    "code-runner.runInTerminal": true,
+    "code-runner.customCommand": "python -m behave",
+    "code-runner.executorMap": {
+        "python": "$pythonPath -m //$fullFileName"
+    },
+    "files.autoSave": "afterDelay",
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+    "window.newWindowDimensions": "maximized",
+    "bracket-pair-colorizer-2.highlightActiveScope": true,
+    "cucumberautocomplete.steps": [
+        "features/steps/*.py"
+    ],
+    "cucumberautocomplete.syncfeatures": "features/*feature",
+    "cucumberautocomplete.strictGherkinCompletion": true
+}
