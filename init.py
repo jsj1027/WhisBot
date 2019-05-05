@@ -5,6 +5,7 @@ from discord.ext import commands
 from log_sys.log_system import *
 from initialization import Base_class
 from utils.openYaml import yamlLoader
+from utils.dictionary import set_black_list, set_white_list, set_users
 from database.databaseManager import getDatabase
 
 Base = Base_class.Base()
@@ -37,6 +38,10 @@ for program in training_programs:
         failed_training_programs.append([program, type(x).__name__, x])
 
 Base.set_failed_training_programs(failed_training_programs)
+
+set_black_list()
+set_white_list()
+set_users()
 
 
 @bot.event
